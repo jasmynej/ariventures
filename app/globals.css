@@ -1,42 +1,85 @@
+@font-face {
+    font-family: 'Boska';
+    src: url('/fonts/Boska-Variable.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Boska';
+    src: url('/fonts/Boska-VariableItalic.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'General Sans';
+    src: url('/fonts/GeneralSans-Variable.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'General Sans';
+    src: url('/fonts/GeneralSans-VariableItalic.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    /* Colors */
+    --primary-tan: #dbbda8;
+    --primary-rose: #F7C6C6;
+    --primary-clay: #b09578;
+    --primary-blush: #f5e2d7;
+
+    --secondary-mocha: #8a6b5b;
+    --secondary-mauve: #b881b1;
+    --secondary-offwhite: #f7f1ed;
+    --secondary-charcoal: #343333;
+
+    --hover-rose: #E6AFAF;
+
+    /* Typography */
+    --font-display: 'Boska', serif;
+    --font-body: 'General Sans', sans-serif;
+
+    /* Spacing (example) */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 40px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body), serif;
+    color: var(--secondary-charcoal);
+    line-height: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+h1, h2, h3, h4 {
+    font-family: var(--font-display), serif;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+
+main {
+    min-height: 30vh;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+button {
+    border: none;
+    font-family: var(--font-body), serif;
+    font-size: 1rem;
+    padding: .5rem;
 }
