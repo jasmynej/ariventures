@@ -7,9 +7,10 @@ import Link from "next/link";
 
 const pageTitles = {
     "/admin":  "Dashboard",
-    "/blog-posts": "Blog",
-    "/blog-posts/new": "New Blog Post",
-    "/travel-guides": "Travel Guides",
+    "/admin/blog": "Blog",
+    "/admin/blog-posts/new": "New Blog Post",
+    "/admin/travel-guides": "Travel Guides",
+    "/admin/users": "Users",
 } as const;
 
 type PagePath = keyof typeof pageTitles;

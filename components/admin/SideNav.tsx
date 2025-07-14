@@ -33,7 +33,6 @@ export default function SideNav() {
         <div className={dashboard.sideNavContainer}>
             <div className={dashboard.sideHeader}>
                 <img src="/images/ariventures_logo.png" alt="logo" />
-                <p>Admin Dashboard</p>
             </div>
 
             <div className={dashStyles.nav}>
