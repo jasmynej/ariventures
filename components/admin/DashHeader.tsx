@@ -4,6 +4,14 @@ import { usePathname } from 'next/navigation';
 import {NavLinks} from "@/types/core";
 import Link from "next/link";
 
+const pageTitlePatterns: { pattern: string; title: string }[] = [
+    { pattern: "/admin", title: "Dashboard" },
+    { pattern: "/admin/blog", title: "Blog" },
+    { pattern: "/admin/blog-posts/new", title: "New Blog Post" },
+    { pattern: "/admin/travel-guides", title: "Travel Guides" },
+    { pattern: "/admin/users", title: "Users" },
+    { pattern: "/admin/models", title: "Models" },
+];
 
 const pageTitles = {
     "/admin":  "Dashboard",
@@ -13,12 +21,19 @@ const pageTitles = {
     "/admin/users": "Users",
 } as const;
 
-type PagePath = keyof typeof pageTitles;
-
-
 export default function DashHeader () {
     const pathname = usePathname();
-    const title = pageTitles[pathname as PagePath] ?? "Untitled";
+
+    const getPageTitle = (pathname: string): string => {
+        // Sort patterns by length so exact matches come before broader ones
+        const match = pageTitlePatterns
+            .sort((a, b) => b.pattern.length - a.pattern.length)
+            .find(({ pattern }) => pathname === pattern || pathname.startsWith(pattern + "/"));
+
+        return match?.title ?? "Untitled";
+    };
+
+    const title = getPageTitle(pathname);
     return (
         <div className={dashStyles.dashHeaderContainer}>
             <h2>{title}</h2>

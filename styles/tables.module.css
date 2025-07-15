@@ -1,0 +1,48 @@
+.primaryTable {
+    width: 100%;
+    border: 1px solid gainsboro;
+    border-radius: 4px;
+    border-collapse: collapse;
+}
+
+.primaryTableHeader {
+    background-color: var(--secondary-offwhite);
+}
+
+.primaryTableWrapper {
+    max-height: 70vh;
+    overflow-y: auto;
+    margin-top: 10px;
+}
+
+.primaryTableHeader th {
+    position: sticky;
+    top: 0;
+    font-weight: normal;
+    text-transform: uppercase;
+    background-color: var(--secondary-offwhite);
+    color: var(--primary-clay);
+    text-align: left;
+    font-size: 1.3em;
+    padding: 10px;
+    z-index: 1;
+}
+
+.primaryTable tbody {
+    background-color: white;
+}
+
+.primaryTableRow {
+    border-bottom: 1px solid var(--primary-clay);
+    padding: 3px;
+}
+
+.primaryTableRow img {
+    width: 2em;
+}
+
+.actions {
+    display: flex;
+    gap: 1em;
+    padding: 1em;
+}

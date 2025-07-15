@@ -1,0 +1,20 @@
+openapi: 3.1.0
+info:
+  title: Countries
+  description: Countries
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:3000/api/countries'
+paths:
+  /url:
+    get:
+      description: All Countries
+      responses:
+        200:
+          description: New response
+          content:
+            application/json:
+              schema:
+                :
+
+  
