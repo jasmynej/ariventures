@@ -9,3 +9,26 @@
     background-color: var(--hover-rose);
     color: var(--secondary-offwhite)
 }
+
+.edit {
+    background-color: var(--yellow);
+    transition: background-color 0.3s ease-in, color 0.3s ease-in;
+}
+
+.trash {
+    background-color: var(--red);
+    transition: background-color 0.3s ease-in, color 0.3s ease-in;
+}
+
+.edit:hover {
+    background-color: var(--yellow-hover);
+}
+
+.trash:hover {
+    background-color: var(--red-hover);
+}
+
+.edit i,
+.trash i {
+    color: var(--secondary-offwhite)
+}

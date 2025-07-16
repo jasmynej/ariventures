@@ -1,3 +1,5 @@
+@import "~@flaticon/flaticon-uicons/css/all/all";
+
 @font-face {
     font-family: 'Boska';
     src: url('/fonts/Boska-Variable.ttf') format('truetype');
@@ -35,13 +37,28 @@
     /* Colors */
     --primary-tan: #dbbda8;
     --primary-rose: #F7C6C6;
-    --primary-clay: #b09578;
+    --primary-clay: #B09578;
     --primary-blush: #f5e2d7;
 
     --secondary-mocha: #8a6b5b;
     --secondary-mauve: #b881b1;
     --secondary-offwhite: #f7f1ed;
     --secondary-charcoal: #343333;
+
+    --red: #D97C7C;
+    --red-hover: #c56a6a;
+
+    --blue: #7A9CA2;
+    --blue-hover: #6b8c91;
+
+    --green: #9BAF88;
+    --green-hover: #889c76;
+
+    --yellow: #E6D1A3;
+    --yellow-hover: #d4be91;
+
+    --purple: #A08BA5;
+    --purple-hover: #917996;
 
     --hover-rose: #E6AFAF;
 

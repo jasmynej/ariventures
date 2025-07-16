@@ -2,9 +2,9 @@
 import Navbar from "@/components/Navbar";
 
 const navLinks = [
-    { label: 'About', href: '#about' },
     { label: 'Services', href: '#services' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Blog', href: '#blog' },
+    { label: 'Ariventures Abroad', href: '#contact' },
 ];
 
 

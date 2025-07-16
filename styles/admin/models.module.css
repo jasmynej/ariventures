@@ -1,0 +1,25 @@
+.modelNav {
+    display: flex;
+    background-color: white;
+    gap: 10px;
+    padding-left: 10px;
+}
+
+.modelNav div {
+    border-bottom: 3px solid white;
+    text-decoration: none;
+    padding: 10px;
+}
+.modelNav div:hover,
+.modelNav div.active {
+    border-bottom: 3px solid var(--primary-rose);
+}
+
+.modelNavLink {
+    text-decoration: none;
+    color: var(--secondary-charcoal);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
