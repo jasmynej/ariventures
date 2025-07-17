@@ -1,0 +1,73 @@
+.blogForm {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.colMain {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+.blogDetailsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    border: 1px solid lightgray;
+    border-radius: 1rem;
+    padding: 1em;
+    background: var(--ecru);
+}
+
+.fieldGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--secondary-mocha);
+}
+
+.input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.textEditor {
+    background: #fff;
+    border-radius: .5rem;
+    border: 1px solid lightgray;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+}
+
+.headerActions {
+}
+
+.headerActions button {
+    margin: 0.5rem;
+}
+
+.formSectionTitle {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--secondary-mocha);
+    line-height: 1px;
+}

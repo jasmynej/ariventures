@@ -6,4 +6,8 @@ type NavLink = {
     icon: JSX.Element | undefined
 }
 
+export type FormComponentProps = {
+    value: any,
+    onChangeAction: (value: any) => void,
+}
 export type NavLinks = NavLink[];
