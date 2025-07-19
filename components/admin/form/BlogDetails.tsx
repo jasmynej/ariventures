@@ -26,7 +26,14 @@ export default function BlogDetails() {
                     {...register("title", { required: true })}
                 />
                 {title && (
-                    <p className={styles.slugPreview}>Slug: <code>{createSlug(title)}</code></p>
+                    <div>
+                        <label htmlFor="title" className={styles.label}>Slug</label>
+                        <input type="text" className={styles.input}
+                               value={createSlug(title)}
+                               {...register("slug", { required: true })}
+                        />
+                    </div>
+
                 )}
             </div>
 

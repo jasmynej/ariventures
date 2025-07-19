@@ -36,7 +36,7 @@ export default function DashHeader () {
     const title = getPageTitle(pathname);
     return (
         <div className={dashStyles.dashHeaderContainer}>
-            <h2>{title}</h2>
+            <h2 className={dashStyles.dashTitle}>{title}</h2>
 
         </div>
     )

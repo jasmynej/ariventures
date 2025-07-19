@@ -49,7 +49,6 @@
     flex-grow: 1;
     overflow-y: auto;
     background-color: #faf2f2;
-    padding: 1em;
 }
 
 .nav {
@@ -78,3 +77,8 @@
 }
 
 
+.dashTitle {
+    color: var(--primary-clay);
+    font-size: 2em;
+    margin: 1rem;
+}

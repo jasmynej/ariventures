@@ -1,7 +1,16 @@
+
+
 .blogForm {
     display: flex;
     flex-direction: column;
     padding: 1em;
+}
+
+.innerFormWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1em;
 }
 
 .row {
@@ -14,7 +23,16 @@
     display: flex;
     flex-direction: column;
     width: 60%;
+    gap: 1em;
 }
+.colSecondary {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    gap: 1em;
+    align-items: flex-end;
+}
+
 .blogDetailsWrapper {
     display: flex;
     flex-direction: column;
@@ -48,6 +66,7 @@
     background: #fff;
     border-radius: .5rem;
     border: 1px solid lightgray;
+    font-family: var(--font-body), sans-serif;
 }
 
 .header {
@@ -70,4 +89,86 @@
     font-weight: 400;
     color: var(--secondary-mocha);
     line-height: 1px;
+    font-family: var(--font-body), sans-serif;
+}
+
+.imageUpload {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed var(--primary-clay);
+    border-radius: .5em;
+    padding: 1em;
+}
+
+.imageUploadContainer {
+    background-color: var(--ecru);
+    border: 1px solid lightgray;
+    padding: 1em;
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.hiddenInput {
+    display: none;
+}
+
+.uploadLabel {
+    display: inline-block;
+    padding: 0.75em 1.25em;
+    background-color: var(--primary-tan);
+    color: white;
+    font-weight: bold;
+    border-radius: .1em;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.2s ease;
+}
+
+.uploadLabel:hover {
+    background-color: var(--hover-rose);
+}
+
+.imagePreview {
+    margin-top: 1em;
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.blogOptionsWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    background: var(--ecru);
+    border: 1px solid lightgray;
+    padding: 1em;
+    border-radius: 1rem;
+    gap:.6rem;
+}
+
+.select, .datePicker {
+    padding: 0.5rem;
+    border: 1px solid lightgray;
+    color: var(--secondary-charcoal);
+    border-radius: .3rem;
+    font-size: 1rem;
+    font-family: var(--font-body), sans-serif;
+}
+
+.imgIcon {
+    background-color: var(--primary-blush);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    padding: 1.5rem;
+    margin: 0.5rem;
+}
+
+.imgIcon i {
+    color: var(--primary-tan);
+    font-size: 3rem;
 }

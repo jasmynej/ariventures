@@ -1,4 +1,4 @@
-type BlogPost = {
+export type BlogPost = {
     id: string;
     title: string;
     slug: string;
@@ -10,3 +10,21 @@ type BlogPost = {
     updated_at: string
 }
 
+export type NewBlogPost = {
+    title: string;
+    slug: string;
+    content: any;
+    cover_image: FileList,
+    published_at: Date,
+    author_id: string;
+}
+
+export type NewPostRequest = {
+    title: string;
+    slug: string;
+    content: any;
+    cover_image: string
+    published_at?: Date,
+    status: string;
+    author_id: string;
+}

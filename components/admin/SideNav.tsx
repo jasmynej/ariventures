@@ -17,7 +17,10 @@ export default function SideNav() {
 
             <div className={dashStyles.nav}>
                 {adminSideNavLinks.map((link) => {
-                    const isActive = pathname === link.href;
+                    const isActive =
+                        link.href === "/admin"
+                            ? pathname === "/admin" // Only active if exactly on /admin
+                            : pathname.startsWith(link.href); // Active if any nested route matches
 
                     return (
                         <Link

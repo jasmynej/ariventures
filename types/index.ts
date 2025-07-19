@@ -1,2 +1,3 @@
 export type {Country, Countries} from './Country'
-export type {FormComponentProps} from './core'
+export type {FormComponentProps, MediaUploadOptions} from './core'
+export type {BlogPost, NewBlogPost, NewPostRequest} from './Blog'
