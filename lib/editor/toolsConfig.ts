@@ -34,7 +34,6 @@ export const tools: { [toolName: string]: ToolConstructable | any } ={
                     try {
                         const url = await uploadMedia({
                             bucket: 'blog-assets',
-                            folder: 'body-images',
                             file,
                         });
 

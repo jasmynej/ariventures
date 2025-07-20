@@ -1,7 +1,7 @@
-import { createClient } from '@/lib/server'
+import { createClient } from '@/lib/client'
 
 export async function getAllBlogPosts() {
-    const supabase = await createClient();
+    const supabase = createClient();
     const { data, error } = await supabase
         .from('blog_posts')
         .select('*')
@@ -12,7 +12,7 @@ export async function getAllBlogPosts() {
 }
 
 export async function getBlogPostBySlug(slug: string) {
-    const supabase = await createClient();
+    const supabase = createClient();
     const { data, error } = await supabase
         .from('blog_posts')
         .select('*')
@@ -32,7 +32,7 @@ export async function createBlogPost(post: {
     status?: string;
     published_at?: string;
 }) {
-    const supabase = await createClient();
+    const supabase = createClient();
     const { data, error } = await supabase
         .from('blog_posts')
         .insert([post])
@@ -44,7 +44,7 @@ export async function createBlogPost(post: {
 }
 
 export async function updateBlogPost(id: string, updates: Partial<Omit<Parameters<typeof createBlogPost>[0], "author_id">>) {
-    const supabase = await createClient();
+    const supabase = createClient();
     const { data, error } = await supabase
         .from('blog_posts')
         .update(updates)
@@ -57,7 +57,7 @@ export async function updateBlogPost(id: string, updates: Partial<Omit<Parameter
 }
 
 export async function deleteBlogPost(id: string) {
-    const supabase = await createClient();
+    const supabase = createClient();
     const { error } = await supabase
         .from('blog_posts')
         .delete()

@@ -25,10 +25,12 @@
     "@supabase/supabase-js": "^2.50.2",
     "@svgr/webpack": "^8.1.0",
     "axios": "^1.10.0",
+    "editorjs-blocks-react-renderer": "^1.3.0",
     "editorjs-color-picker": "^1.0.8",
     "next": "15.3.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-editor-js": "^2.1.0",
     "react-hook-form": "^7.60.0",
     "uuid": "^11.1.0"
   },

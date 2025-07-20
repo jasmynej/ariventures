@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 
 const navLinks = [
     { label: 'Services', href: '#services' },
-    { label: 'Blog', href: '#blog' },
+    { label: 'Blog', href: '/blog' },
     { label: 'Ariventures Abroad', href: '#contact' },
 ];
 

@@ -1,6 +1,6 @@
-import {MediaUploadOptions, NewBlogPost, NewPostRequest} from "@/types";
+import {BlogPost, BlogPosts, MediaUploadOptions, NewBlogPost, NewPostRequest} from "@/types";
 import {uploadMedia} from "@/lib/media";
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
 
 function createSlug(title: string) {
     return title
@@ -13,13 +13,18 @@ function createSlug(title: string) {
 
 
 async function newBlogPostApi(newPost: NewBlogPost, status: string) {
-    // @ts-ignore
-    let uploadOptions: MediaUploadOptions = {
-        bucket:'blog-assets',
-        folder:'header-images',
-        file: newPost.cover_image[0]
+    let cover_img_url: string;
+
+    if (newPost.cover_image instanceof FileList) {
+        const uploadOptions: MediaUploadOptions = {
+            bucket: 'blog-assets',
+            file: newPost.cover_image[0]
+        };
+        cover_img_url = await uploadMedia(uploadOptions);
+    } else {
+        cover_img_url = newPost.cover_image;
     }
-    let cover_img_url = await uploadMedia(uploadOptions);
+
     const formattedPost: NewPostRequest = {
         title: newPost.title,
         slug: createSlug(newPost.title),
@@ -28,14 +33,25 @@ async function newBlogPostApi(newPost: NewBlogPost, status: string) {
         author_id: newPost.author_id,
         published_at: newPost.published_at,
         status: status
-    }
-    axios.post('/api/blog', formattedPost)
-        .then((response) => {
-            console.log(response)
-        })
-        .catch((error) => {
-            console.log(error);
-        })
+    };
 
+    try {
+        const response = await axios.post('/api/blog', formattedPost);
+        console.log(response);
+    } catch (error) {
+        console.error(error);
+    }
 }
-export {createSlug, newBlogPostApi};
+
+async function fetchBlogPosts(): Promise<BlogPosts> {
+    const postsResponse: AxiosResponse = await axios.get('/api/blog');
+    return postsResponse.data;
+}
+
+async function fetchBlogPost(slug: string): Promise<BlogPost> {
+    const postResponse: AxiosResponse = await axios.get(`/api/blog/${slug}`);
+    return postResponse.data;
+}
+
+
+export {createSlug, newBlogPostApi, fetchBlogPost, fetchBlogPosts};

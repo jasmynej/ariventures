@@ -10,6 +10,7 @@ import BlogFeaturedImageUpload from "@/components/admin/form/BlogFeaturedImageUp
 import BlogOptions from "@/components/admin/form/BlogOptions";
 import {newBlogPostApi} from "@/lib/blogFunctions";
 import type {NewBlogPost} from "@/types";
+import MediaPicker from "@/components/admin/MediaPicker";
 
 export default function NewBlogPost() {
     const form = useForm({

@@ -2,7 +2,7 @@ export type BlogPost = {
     id: string;
     title: string;
     slug: string;
-    content: string;
+    content: any;
     cover_image: string;
     status: string;
     published_at: string
@@ -14,7 +14,7 @@ export type NewBlogPost = {
     title: string;
     slug: string;
     content: any;
-    cover_image: FileList,
+    cover_image: FileList | string,
     published_at: Date,
     author_id: string;
 }
@@ -28,3 +28,5 @@ export type NewPostRequest = {
     status: string;
     author_id: string;
 }
+
+export type BlogPosts = BlogPost[];
