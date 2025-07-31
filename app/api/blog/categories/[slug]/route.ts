@@ -3,10 +3,11 @@ import {getCategoryBySlug} from "@/repo/blog";
 
 import {NextRequest, NextResponse} from "next/server";
 
-export async function GET(req: NextRequest, { params }: { params: { slug: string } }) {
+export async function GET(req: NextRequest, props: { params: Promise<{ slug: string }> }) {
+    const params = await props.params;
     try{
-        let slug = await params.slug;
-        const category = await getCategoryBySlug(slug);
+
+        const category = await getCategoryBySlug(params.slug);
         return NextResponse.json(category);
     }
     catch(error){

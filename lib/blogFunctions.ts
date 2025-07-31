@@ -10,6 +10,7 @@ import {
 import {uploadMedia} from "@/lib/media";
 import axios, {AxiosResponse} from "axios";
 import {BlogStatus} from "@/types/Blog";
+import {getOrCreateCategory, getOrCreateTags, insertBlogTags} from "@/repo/blog";
 
 function createSlug(title: string) {
     return title
@@ -34,6 +35,8 @@ async function newBlogPostApi(newPost: NewBlogPost, status: BlogStatus) {
         cover_img_url = newPost.cover_image;
     }
 
+    let category_id = await getOrCreateCategory(newPost.category);
+    let tag_ids = await getOrCreateTags(newPost.tags);
     const formattedPost: NewPostRequest = {
         title: newPost.title,
         slug: createSlug(newPost.title),
@@ -41,12 +44,17 @@ async function newBlogPostApi(newPost: NewBlogPost, status: BlogStatus) {
         content: newPost.content,
         author_id: newPost.author_id,
         published_at: newPost.published_at,
-        status: status.valueOf()
+        status: status.valueOf(),
+        category: category_id,
     };
 
     try {
+        console.log(formattedPost);
         const response = await axios.post('/api/blog', formattedPost);
-        console.log(response);
+        const blogPost: BlogPost = await response.data;
+        const tags = await insertBlogTags(blogPost.id, tag_ids);
+        console.log(tags);
+        console.log(blogPost);
     } catch (error) {
         console.error(error);
     }
@@ -66,7 +74,6 @@ async function fetchCategories(): Promise<BlogCategory[]> {
     if (!res.ok) throw new Error("Failed to fetch categories");
     return res.json();
 }
-
 
 
 async function fetchTags(): Promise<BlogTag[]> {

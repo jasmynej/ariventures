@@ -6,7 +6,8 @@ import {
     deleteBlogPost,
 } from '@/repo/blog'
 
-export async function GET(req: NextRequest, { params }: { params: { slug: string } }) {
+export async function GET(req: NextRequest, props: { params: Promise<{ slug: string }> }) {
+    const params = await props.params;
     try {
         const post = await getBlogPostBySlug(params.slug)
         return NextResponse.json(post)
@@ -15,7 +16,8 @@ export async function GET(req: NextRequest, { params }: { params: { slug: string
     }
 }
 
-export async function PUT(req: NextRequest, { params }: { params: { slug: string } }) {
+export async function PUT(req: NextRequest, props: { params: Promise<{ slug: string }> }) {
+    const params = await props.params;
     try {
         const body = await req.json()
         const updated = await updateBlogPost(params.slug, body)
@@ -25,7 +27,8 @@ export async function PUT(req: NextRequest, { params }: { params: { slug: string
     }
 }
 
-export async function DELETE(_: NextRequest, { params }: { params: { slug: string } }) {
+export async function DELETE(_: NextRequest, props: { params: Promise<{ slug: string }> }) {
+    const params = await props.params;
     try {
         await deleteBlogPost(params.slug)
         return NextResponse.json({ success: true })
