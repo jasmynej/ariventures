@@ -22,7 +22,7 @@ export default function BlogDetails() {
                     type="text"
                     id="title"
                     placeholder="Enter blog post title"
-                    className={styles.input}
+                    className={styles.inputTitle}
                     {...register("title", { required: true })}
                 />
                 {title && (

@@ -33,13 +33,13 @@ export default function MediaPicker({ value, onChange }: MediaPickerProps) {
         <div>
             <div className={blogForm.mediaPickerTabs}>
                 <p
-                    className={tab === 0 ? blogForm.activeTab : ''}
+                    className={`${blogForm.mediaTab} ${tab === 0 ? blogForm.activeTab : ''}`}
                     onClick={() => setTab(0)}
                 >
                     Upload Media
                 </p>
                 <p
-                    className={tab === 1 ? blogForm.activeTab : ''}
+                    className={`${blogForm.mediaTab} ${tab === 1 ? blogForm.activeTab : ''}`}
                     onClick={() => setTab(1)}
                 >
                     Choose Existing

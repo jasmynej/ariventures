@@ -65,3 +65,27 @@ export async function deleteBlogPost(id: string) {
 
     if (error) throw error;
 }
+
+export async function getAllCategories() {
+    const supabase = createClient();
+    const { data, error } = await supabase.from("blog_categories").select("*");
+    if (error) throw new Error(error.message);
+    return data;
+}
+
+export async function getAllTags() {
+    const supabase = createClient();
+    const { data, error } = await supabase.from("blog_tags").select("*");
+    if (error) throw new Error(error.message);
+    return data;
+}
+
+export async function getCategoryBySlug(slug: string) {
+    const supabase = createClient();
+    const { data, error } = await supabase.from("blog_categories")
+        .select("*")
+        .eq('slug', slug)
+        .single();
+    if (error) throw new Error(error.message);
+    return data;
+}

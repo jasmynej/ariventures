@@ -1,3 +1,21 @@
+export enum BlogStatus {
+    DRAFT = 'draft',
+    PUBLISHED = 'published',
+    PRIVATE = 'private',
+}
+
+export type BlogCategory = {
+    id: number;
+    name: string;
+    slug: string;
+}
+
+export type BlogTag = {
+    id: number;
+    name: string;
+    slug: string;
+}
+
 export type BlogPost = {
     id: string;
     title: string;
@@ -8,6 +26,7 @@ export type BlogPost = {
     published_at: string
     created_at: string
     updated_at: string
+    category_id: number;
 }
 
 export type NewBlogPost = {
@@ -17,6 +36,9 @@ export type NewBlogPost = {
     cover_image: FileList | string,
     published_at: Date,
     author_id: string;
+    status: BlogStatus;
+    category: string;
+    tags: string[];
 }
 
 export type NewPostRequest = {

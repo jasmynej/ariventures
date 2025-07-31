@@ -1,6 +1,15 @@
-import {BlogPost, BlogPosts, MediaUploadOptions, NewBlogPost, NewPostRequest} from "@/types";
+import {
+    BlogCategory,
+    BlogPost,
+    BlogPosts,
+    BlogTag,
+    MediaUploadOptions,
+    NewBlogPost,
+    NewPostRequest
+} from "@/types";
 import {uploadMedia} from "@/lib/media";
 import axios, {AxiosResponse} from "axios";
+import {BlogStatus} from "@/types/Blog";
 
 function createSlug(title: string) {
     return title
@@ -12,7 +21,7 @@ function createSlug(title: string) {
 }
 
 
-async function newBlogPostApi(newPost: NewBlogPost, status: string) {
+async function newBlogPostApi(newPost: NewBlogPost, status: BlogStatus) {
     let cover_img_url: string;
 
     if (newPost.cover_image instanceof FileList) {
@@ -32,7 +41,7 @@ async function newBlogPostApi(newPost: NewBlogPost, status: string) {
         content: newPost.content,
         author_id: newPost.author_id,
         published_at: newPost.published_at,
-        status: status
+        status: status.valueOf()
     };
 
     try {
@@ -52,6 +61,24 @@ async function fetchBlogPost(slug: string): Promise<BlogPost> {
     const postResponse: AxiosResponse = await axios.get(`/api/blog/${slug}`);
     return postResponse.data;
 }
+async function fetchCategories(): Promise<BlogCategory[]> {
+    const res = await fetch("/api/blog/categories");
+    if (!res.ok) throw new Error("Failed to fetch categories");
+    return res.json();
+}
 
 
-export {createSlug, newBlogPostApi, fetchBlogPost, fetchBlogPosts};
+
+async function fetchTags(): Promise<BlogTag[]> {
+    const res = await fetch("/api/blog/tags");
+    if (!res.ok) throw new Error("Failed to fetch tags");
+    return res.json();
+}
+
+async function fetchCategoryBySlug(slug: string): Promise<BlogCategory> {
+    const res = await fetch("/api/blog/category/" + slug);
+    if (!res.ok) throw new Error("Failed to fetch category with slug: "+slug);
+    return res.json();
+}
+
+export {createSlug, newBlogPostApi, fetchBlogPost, fetchBlogPosts, fetchTags, fetchCategories, fetchCategoryBySlug};
