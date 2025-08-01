@@ -33,21 +33,40 @@ export default function AllBlogPosts() {
             </div>
             <div className={layout.section}>
                 <p>{pageContent.description}</p>
+            </div>
+            <div className={layout.section}>
+                <div className={blog.blogPageContainer}>
+                    <div className={blog.blogPanel}>
+                        {/* Featured Post */}
+                        <div className={blog.featuredPost}>
+                            <BlogCard post={posts[0]} featured />
+                        </div>
 
-                <div>
-                    {/* Featured Post */}
-                    <div className={blog.featuredPost}>
-                        <BlogCard post={posts[0]} featured />
+                        {/* Grid of other posts */}
+                        <div className={blog.blogGrid}>
+                            {posts.slice(1).map((post) => (
+                                <BlogCard key={post.id} post={post} />
+                            ))}
+                        </div>
                     </div>
 
-                    {/* Grid of other posts */}
-                    <div className={blog.blogGrid}>
-                        {posts.slice(1).map((post) => (
-                            <BlogCard key={post.id} post={post} />
-                        ))}
+                    <div className={blog.sideSections}>
+                        <div className={blog.sidePanelSection}>
+                            <h3>Search</h3>
+                        </div>
+                        <div className={blog.sidePanelSection}>
+                            <h3>Categories</h3>
+                        </div>
+                        <div className={blog.sidePanelSection}>
+                            <h3>Tags</h3>
+                        </div>
+                        <div className={blog.sidePanelSection}>
+                            <h3>Subscribe</h3>
+                        </div>
                     </div>
                 </div>
             </div>
+
 
         </div>
     )

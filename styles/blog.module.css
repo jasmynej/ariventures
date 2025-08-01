@@ -35,3 +35,28 @@
         grid-row: span 2;
     }
 }
+
+.blogPageContainer {
+    width: 100%;
+    display: flex;
+}
+
+.sidePanelSection {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: .5em;
+    margin-bottom: 1rem;
+}
+
+.sidePanelSection h3 {
+    font-family: var(--font-body) sans-serif;
+    font-weight: 400;
+}
+
+.sideSections {
+    width: 30em;
+}
+
+.blogPanel {
+}

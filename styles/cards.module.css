@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     width: 24em;
-    height: 30em;
+    height: 32em;
     background-color: white;
     overflow: hidden;
 }
@@ -46,12 +46,14 @@
 }
 
 .blogCardContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: .5em 1em;
 }
 .blogCardText {
-    display: flex;
-    flex-direction: column;
-    line-height: 15px;
+
 }
 
 .blogMetadata {

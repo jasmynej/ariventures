@@ -2,6 +2,8 @@ import { BlogPost } from "@/types";
 import {getBlogExcerpt} from "@/lib/blogFunctions";
 import {formatDate} from "@/lib/utils";
 import cards from '@/styles/cards.module.css';
+import buttons from '@/styles/buttons.module.css';
+import { useRouter } from 'next/navigation';
 
 interface Props {
     post: BlogPost;
@@ -9,6 +11,8 @@ interface Props {
 }
 
 export default function BlogCard({ post, featured = false }: Props) {
+    const router = useRouter();
+
     return (
         <div className={`${cards.blogCardContainer} ${featured ? cards.featuredCard : ''}`}>
             {
@@ -31,8 +35,9 @@ export default function BlogCard({ post, featured = false }: Props) {
                 </div>
                 <div className={cards.blogCardText}>
                     <h3 className={cards.title}>{post.title}</h3>
-                    <p>{getBlogExcerpt(post.content, 150)}</p>
+                    <p>{getBlogExcerpt(post.content, 100)}</p>
                 </div>
+                <button className={buttons.primary} onClick={() => router.push(`/blog/${post.slug}`)}>Read More</button>
             </div>
 
         </div>
