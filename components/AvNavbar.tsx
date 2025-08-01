@@ -10,6 +10,6 @@ const navLinks = [
 
 export default function AvNavbar() {
     return (
-        <Navbar logo="/images/ariventures_logo.png" links={navLinks} />
+        <Navbar logo="/images/ariventures_logo.png" links={navLinks} homeLink="/" />
     )
 }

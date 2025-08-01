@@ -79,3 +79,35 @@
     font-size: 1.5rem;
     color: var(--secondary-mocha);
 }
+
+.iconCardContainer {
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    padding: 1.5rem;
+    background-color: var(--primary-tan);
+}
+.iconContainer {
+    width: max-content;
+    padding: 1rem;
+    border-radius: 100%;
+    background-color:var(--primary-blush);
+}
+
+.iconCardContainer:nth-child(odd) {
+    background-color: var(--primary-blush);
+}
+
+.iconContainer:nth-child(odd) {
+    background-color: var(--secondary-offwhite);
+}
+.icon {
+    width: 3rem;
+    height: auto;
+}
+
+.cardTitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary-charcoal);
+}
