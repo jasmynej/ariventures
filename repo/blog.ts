@@ -1,10 +1,25 @@
-import { createClient } from '@/lib/client'
+import {createClient} from '@/lib/client'
 import {BlogPostTag, NewPostRequest} from "@/types";
+
 const supabase = createClient();
 export async function getAllBlogPosts() {
     const { data, error } = await supabase
         .from('blog_posts')
-        .select('*')
+        .select(`
+            *,
+            category:category (
+                id,
+                name,
+                slug
+            ),
+            tags:blog_post_tags (
+                tag:tag_id (
+                    id,
+                    name,
+                    slug
+                )
+            )
+        `)
         .order('created_at', { ascending: false });
 
     if (error) throw error;
@@ -14,12 +29,29 @@ export async function getAllBlogPosts() {
 export async function getBlogPostBySlug(slug: string) {
     const { data, error } = await supabase
         .from('blog_posts')
-        .select('*')
+        .select(`
+            *,
+            category:category (
+                id,
+                name,
+                slug
+            ),
+            tags:blog_post_tags (
+                tag:tag_id (
+                    id,
+                    name,
+                    slug
+                )
+            )
+        `)
         .eq('slug', slug)
         .single();
 
     if (error) throw error;
-    return data;
+    return {
+        ...data,
+        tags: data.tags.map((entry: { tag: any }) => entry.tag)
+    };
 }
 
 export async function createBlogPost(post: NewPostRequest) {

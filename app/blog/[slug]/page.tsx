@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import Blocks from 'editorjs-blocks-react-renderer';
 import type { BlogPost } from '@/types';
 import { fetchBlogPost } from '@/lib/blogFunctions';
-
+import blogStyles from '@/styles/blog.module.css'
 const customRenderers = {
     image: ({ data }: any) => (
         <div style={{ margin: '1em 0' }}>
@@ -32,7 +32,8 @@ export default function BlogPost() {
     if (!post) return <p>Loading...</p>;
 
     return (
-        <div>
+        <div >
+            <img src={post.cover_image} className={blogStyles.coverImage} />
             <h1>{post.title}</h1>
             <Blocks data={post.content} renderers={customRenderers} />
         </div>

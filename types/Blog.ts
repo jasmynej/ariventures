@@ -2,6 +2,7 @@ export enum BlogStatus {
     DRAFT = 'DRAFT',
     PUBLISHED = 'PUBLISHED',
     PRIVATE = 'PRIVATE',
+    SCHEDULED = 'SCHEDULED',
 }
 
 export type BlogCategory = {
@@ -26,7 +27,8 @@ export type BlogPost = {
     published_at: string
     created_at: string
     updated_at: string
-    category_id: number;
+    category: BlogCategory;
+    tags: BlogTag[];
 }
 
 export type NewBlogPost = {

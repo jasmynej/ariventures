@@ -88,4 +88,28 @@ async function fetchCategoryBySlug(slug: string): Promise<BlogCategory> {
     return res.json();
 }
 
-export {createSlug, newBlogPostApi, fetchBlogPost, fetchBlogPosts, fetchTags, fetchCategories, fetchCategoryBySlug};
+function getBlogExcerpt(content: any, maxLength = 100): string {
+    const paragraph = content.blocks.find(
+        (block: any) => block.type === "paragraph"
+    );
+
+    if (!paragraph) return "";
+
+    // Remove inline HTML tags (e.g., <b>, <i>, etc.)
+    const plainText = paragraph.data.text.replace(/<[^>]+>/g, "");
+
+    return plainText.length > maxLength
+        ? plainText.slice(0, maxLength).trim() + "..."
+        : plainText;
+}
+
+export {
+    createSlug,
+    newBlogPostApi,
+    fetchBlogPost,
+    fetchBlogPosts,
+    fetchTags,
+    fetchCategories,
+    fetchCategoryBySlug,
+    getBlogExcerpt,
+};

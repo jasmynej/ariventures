@@ -35,7 +35,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 45vh;
     color: white;
     overflow: hidden;
     z-index: 0; /* creates stacking context */

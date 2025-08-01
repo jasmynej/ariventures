@@ -1,0 +1,37 @@
+.coverImage {
+    width: 30%;
+}
+
+.blogGrid {
+    display: grid;
+    grid-auto-rows: auto;
+    width: 50rem;
+    gap: 1rem;
+}
+
+.featuredPost {
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+    .blogGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .featuredPost {
+        grid-column: 1 / -1; /* still span full width */
+    }
+}
+
+@media (min-width: 1024px) {
+    .blogGrid {
+        grid-template-columns: 2fr 1fr 1fr; /* featured on left, 2 smalls on right */
+        grid-auto-flow: dense;
+    }
+
+    .featuredPost {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+}
