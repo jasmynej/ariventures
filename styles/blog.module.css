@@ -1,5 +1,14 @@
+
+.coverImageContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .coverImage {
-    width: 30%;
+    background-size: cover;
+    background-position: center top;
+    height: 31.25em;
 }
 
 .blogGrid {
@@ -56,4 +65,37 @@
 }
 
 .blogPanel {
+}
+
+.blogPostContainer {
+    padding: 3.125rem 6.25rem;
+}
+
+.postContent {
+    width: 50em;
+}
+
+.postTitle {
+    font-size: 3em;
+    color: var(--secondary-mocha)
+}
+
+.postMetadata {
+    display: flex;
+    gap: .5em;
+    align-items: center;
+    font-size: 1.2em;
+}
+
+.category {
+    background-color: var(--primary-blush);
+    color: var(--secondary-mocha);
+    padding: 3px;
+    border-radius: 3px;
+}
+
+.date {
+    color: var(--gray);
+    font-weight: lighter;
+
 }
