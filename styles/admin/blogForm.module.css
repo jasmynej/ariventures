@@ -1,0 +1,243 @@
+
+
+.blogForm {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+
+.innerFormWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1em;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.colMain {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    gap: 1em;
+}
+.colSecondary {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    gap: 1em;
+    align-items: flex-end;
+}
+
+.blogDetailsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    border: 1px solid lightgray;
+    border-radius: 1rem;
+    padding: 1em;
+    background: var(--ecru);
+}
+
+.fieldGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--secondary-mocha);
+}
+
+.inputTitle {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: .5rem;
+    font-family: var(--font-body), sans-serif;
+    margin-top: 0.5rem;
+}
+
+.textEditor {
+    background: #fff;
+    border-radius: .5rem;
+    border: 1px solid lightgray;
+    font-family: var(--font-body), sans-serif;
+    margin-top: 0.5rem;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+}
+
+.headerActions {
+}
+
+.headerActions button {
+    margin: 0.5rem;
+}
+
+.formSectionTitle {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--secondary-mocha);
+    line-height: 1px;
+    font-family: var(--font-body), sans-serif;
+}
+
+.imageUpload {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed var(--primary-clay);
+    border-radius: .5em;
+    padding: 1em;
+}
+
+.imageUploadContainer {
+    background-color: var(--ecru);
+    border: 1px solid lightgray;
+    padding: 1em;
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.hiddenInput {
+    display: none;
+}
+
+.uploadLabel {
+    display: inline-block;
+    padding: 0.75em 1.25em;
+    background-color: var(--primary-tan);
+    color: white;
+    font-weight: bold;
+    border-radius: .1em;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.2s ease;
+}
+
+.uploadLabel:hover {
+    background-color: var(--hover-rose);
+}
+
+.imagePreview {
+    margin-top: 1em;
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.blogOptionsWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    background: var(--ecru);
+    border: 1px solid lightgray;
+    padding: 1em;
+    border-radius: 1rem;
+    gap:.6rem;
+}
+
+.select, .datePicker {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid lightgray;
+    color: var(--secondary-charcoal);
+    border-radius: .3rem;
+    font-size: 1rem;
+    font-family: var(--font-body), sans-serif;
+}
+
+.imgIcon {
+    background-color: var(--primary-blush);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    padding: 1.5rem;
+    margin: 0.5rem;
+}
+
+.imgIcon i {
+    color: var(--primary-tan);
+    font-size: 3rem;
+}
+
+.mediaPickerTabs {
+    display: flex;
+    gap: 1rem;
+}
+
+.mediaTab {
+    background-color: var(--primary-blush);
+    padding: 0.5rem;
+}
+.mediaPickerTabs p:hover {
+    background-color: var(--hover-rose);
+}
+
+.activeTab {
+    background-color: var(--primary-rose);
+}
+
+/* TagInput.module.css */
+.container {
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-family: var(--font-body), sans-serif;
+    font-size: 1rem;
+}
+
+.tagList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.tag {
+    background: #f5e0d8;
+    color: #704c3c;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    border-radius: 9999px;
+    min-width: max-content;
+    padding: 0 5px;
+}
+.tag p {
+    line-height: 0;
+}
+.tag button {
+    background: none;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.closeButton {
+    color: var(--primary-tan);
+    font-weight: bold;
+    cursor: pointer;
+}

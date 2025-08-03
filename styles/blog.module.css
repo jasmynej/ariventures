@@ -1,0 +1,101 @@
+
+.coverImageContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.coverImage {
+    background-size: cover;
+    background-position: center top;
+    height: 31.25em;
+}
+
+.blogGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Always two equal-width columns */
+    gap: 1rem;
+    width: 100%; /* or a max-width if needed */
+}
+.featuredPost {
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+    .blogGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .featuredPost {
+        grid-column: 1 / -1; /* still span full width */
+    }
+}
+
+@media (min-width: 1024px) {
+
+
+    .featuredPost {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+}
+
+.blogPageContainer {
+    width: 100%;
+    display: flex;
+    gap: 2em;
+}
+
+.sidePanelSection {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: .5em;
+    margin-bottom: 1rem;
+}
+
+.sidePanelSection h3 {
+    font-family: var(--font-body) sans-serif;
+    font-weight: 400;
+}
+
+.sideSections {
+    width: 30em;
+}
+
+.blogPanel {
+}
+
+.blogPostContainer {
+    padding: 3.125rem 6.25rem;
+}
+
+.postContent {
+    width: 50em;
+}
+
+.postTitle {
+    font-size: 3em;
+    color: var(--secondary-mocha)
+}
+
+.postMetadata {
+    display: flex;
+    gap: .5em;
+    align-items: center;
+    font-size: 1.2em;
+}
+
+.category {
+    background-color: var(--primary-blush);
+    color: var(--secondary-mocha);
+    padding: 3px;
+    border-radius: 3px;
+}
+
+.date {
+    color: var(--gray);
+    font-weight: lighter;
+
+}

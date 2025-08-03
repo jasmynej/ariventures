@@ -6,4 +6,14 @@ type NavLink = {
     icon: JSX.Element | undefined
 }
 
+export type FormComponentProps = {
+    value: any,
+    onChangeAction: (value: any) => void,
+}
+
+export type MediaUploadOptions = {
+    bucket: string,
+    folder?: string,
+    file: File,
+}
 export type NavLinks = NavLink[];

@@ -1,6 +1,6 @@
 .primary {
     background-color: var(--primary-rose);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 300;
     transition: background-color 0.3s ease-in, color 0.3s ease-in;
 }
@@ -25,10 +25,31 @@
 }
 
 .trash:hover {
+
     background-color: var(--red-hover);
 }
 
 .edit i,
 .trash i {
+    color: var(--secondary-offwhite)
+}
+
+.borderButton {
+    background-color: transparent;
+    border: 1px solid var(--primary-tan);
+    transition: background-color 0.3s ease-in, color 0.3s ease-in;
+}
+.primarySmall {
+    background-color: var(--primary-rose);
+    border: 1px solid var(--primary-rose);
+    transition: background-color 0.3s ease-in, color 0.3s ease-in;
+}
+
+.primarySmall:hover {
+    background-color: var(--hover-rose);
+    color: var(--secondary-offwhite)
+}
+.borderButton:hover {
+    background-color: var(--primary-tan);
     color: var(--secondary-offwhite)
 }

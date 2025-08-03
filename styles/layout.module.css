@@ -21,8 +21,12 @@
 }
 
 .footer {
-    width: 100%;
-    background-color: var(--primary-blush);
+    display: flex;
+    height: 4em;
+    padding: 30px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
 }
 
 .section {
@@ -35,7 +39,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 45vh;
     color: white;
     overflow: hidden;
     z-index: 0; /* creates stacking context */

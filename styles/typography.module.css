@@ -1,0 +1,18 @@
+.adminPageTitle {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--secondary-mocha)
+}
+
+.pageTitle {
+    font-size: 3.5em;
+    font-weight: bold;
+    color: var(--primary-blush);
+}
+
+.pageTagline {
+    font-size: 2em;
+    font-weight: normal;
+    color: var(--primary-rose);
+    font-style: italic;
+}

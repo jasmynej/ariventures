@@ -45,6 +45,8 @@
     --secondary-offwhite: #f7f1ed;
     --secondary-charcoal: #343333;
 
+    --ecru: #fffdfd;
+
     --red: #D97C7C;
     --red-hover: #c56a6a;
 
@@ -61,7 +63,7 @@
     --purple-hover: #917996;
 
     --hover-rose: #E6AFAF;
-
+    --gray: #6B7280;
     /* Typography */
     --font-display: 'Boska', serif;
     --font-body: 'General Sans', sans-serif;
@@ -87,6 +89,7 @@ body {
 
 h1, h2, h3, h4 {
     font-family: var(--font-display), serif;
+    line-height: 1em;
 }
 
 

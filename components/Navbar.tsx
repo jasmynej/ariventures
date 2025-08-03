@@ -2,6 +2,7 @@
 
 import {JSX, useState} from 'react';
 import layout from '@/styles/layout.module.css'
+import { useRouter } from 'next/navigation';
 
 interface NavLink {
     label: string;
@@ -11,13 +12,14 @@ interface NavLink {
 interface NavbarProps {
     logo: string | JSX.Element;
     links: NavLink[];
+    homeLink: string;
 }
-export default function Navbar({ logo, links }: NavbarProps) {
+export default function Navbar({ logo, links, homeLink }: NavbarProps) {
     const [isOpen, setIsOpen] = useState<boolean>(false);
-
+    const router = useRouter();
     return (
         <div className={layout.header}>
-            <div>
+            <div onClick={() => router.push(homeLink)}>
                 {typeof logo === 'string' ? (
                     <img src={logo} alt="logo" className={layout.site_logo} />
                 ) : (
