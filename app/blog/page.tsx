@@ -8,7 +8,6 @@ import text from "@/styles/typography.module.css"
 import blog from "@/styles/blog.module.css"
 import BlogCard from "@/components/BlogCard";
 import pageContent from '@/data/content/blog.json'
-
 export default function AllBlogPosts() {
     const [posts, setPosts] = useState<BlogPosts>([]);
 
@@ -36,7 +35,7 @@ export default function AllBlogPosts() {
             </div>
             <div className={layout.section}>
                 <div className={blog.blogPageContainer}>
-                    <div className={blog.blogPanel}>
+                    <div>
                         {/* Featured Post */}
                         <div className={blog.featuredPost}>
                             <BlogCard post={posts[0]} featured />

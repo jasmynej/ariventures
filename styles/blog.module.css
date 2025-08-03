@@ -4,11 +4,10 @@
 
 .blogGrid {
     display: grid;
-    grid-auto-rows: auto;
-    width: 50rem;
+    grid-template-columns: 1fr 1fr; /* Always two equal-width columns */
     gap: 1rem;
+    width: 100%; /* or a max-width if needed */
 }
-
 .featuredPost {
     width: 100%;
     margin-bottom: 3rem;
@@ -25,10 +24,7 @@
 }
 
 @media (min-width: 1024px) {
-    .blogGrid {
-        grid-template-columns: 2fr 1fr 1fr; /* featured on left, 2 smalls on right */
-        grid-auto-flow: dense;
-    }
+
 
     .featuredPost {
         grid-column: span 2;
@@ -39,6 +35,7 @@
 .blogPageContainer {
     width: 100%;
     display: flex;
+    gap: 2em;
 }
 
 .sidePanelSection {

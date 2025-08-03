@@ -10,9 +10,9 @@ import BlogFeaturedImageUpload from "@/components/admin/form/BlogFeaturedImageUp
 import BlogOptions from "@/components/admin/form/BlogOptions";
 import {newBlogPostApi} from "@/lib/blogFunctions";
 import type {NewBlogPost} from "@/types";
-import MediaPicker from "@/components/admin/MediaPicker";
 import {BlogCategoriesTags} from "@/components/admin/form/BlogCategoriesTags";
 import {BlogStatus} from "@/types/Blog";
+import { useRouter } from 'next/navigation';
 
 export default function NewBlogPost() {
     const form = useForm({
@@ -22,6 +22,7 @@ export default function NewBlogPost() {
             category: "General Travel",
         }
     });
+    const router = useRouter();
     const submitTypeRef = useRef<BlogStatus>(BlogStatus.DRAFT);
 
     const onSubmit = form.handleSubmit((data: FieldValues, event?: React.BaseSyntheticEvent) => {
@@ -45,6 +46,7 @@ export default function NewBlogPost() {
             console.log(data)
         })
 
+        router.push('/admin/blog')
     });
 
     return (

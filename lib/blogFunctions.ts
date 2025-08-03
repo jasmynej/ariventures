@@ -23,24 +23,26 @@ function createSlug(title: string) {
 
 
 async function newBlogPostApi(newPost: NewBlogPost, status: BlogStatus) {
-    let cover_img_url: string;
-
-    if (newPost.cover_image instanceof FileList) {
-        const uploadOptions: MediaUploadOptions = {
-            bucket: 'blog-assets',
-            file: newPost.cover_image[0]
-        };
-        cover_img_url = await uploadMedia(uploadOptions);
-    } else {
-        cover_img_url = newPost.cover_image;
-    }
+    // let cover_img_url: string;
+    //
+    // if (newPost.cover_image instanceof FileList) {
+    //     const uploadOptions: MediaUploadOptions = {
+    //         bucket: 'blog-assets',
+    //         file: newPost.cover_image[0]
+    //     };
+    //     cover_img_url = await uploadMedia(uploadOptions);
+    // } else {
+    //     cover_img_url = newPost.cover_image;
+    // }
 
     let category_id = await getOrCreateCategory(newPost.category);
     let tag_ids = await getOrCreateTags(newPost.tags);
+
     const formattedPost: NewPostRequest = {
         title: newPost.title,
         slug: createSlug(newPost.title),
-        cover_image: cover_img_url,
+        // @ts-ignore
+        cover_image: newPost.cover_image,
         content: newPost.content,
         author_id: newPost.author_id,
         published_at: newPost.published_at,

@@ -26,7 +26,7 @@ export default function MediaPicker({ value, onChange }: MediaPickerProps) {
         const url = await uploadMedia({ file, bucket: "blog-assets" });
         setImages(prev => [{ name: file.name, url }, ...prev]);
         setUploading(false);
-        onChange(e.target.files as FileList); // update react-hook-form with FileList
+        onChange(url); // update react-hook-form with FileList
     }
 
     return (

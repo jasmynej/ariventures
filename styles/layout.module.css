@@ -21,8 +21,12 @@
 }
 
 .footer {
-    width: 100%;
-    background-color: var(--primary-blush);
+    display: flex;
+    height: 4em;
+    padding: 30px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
 }
 
 .section {
