@@ -16,3 +16,15 @@
     color: var(--primary-rose);
     font-style: italic;
 }
+
+.pageTitle2 {
+    font-size: 2em;
+    color: var(--secondary-mocha)
+}
+
+.pageSubtitle {
+    font-size: 1.4em;
+    color: var(--primary-clay);
+    font-family: var(--font-body), sans-serif;
+    font-weight: lighter;
+}
