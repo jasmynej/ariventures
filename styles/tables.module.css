@@ -41,6 +41,10 @@
     width: 2em;
 }
 
+.primaryTableRow td {
+    gap: 5px;
+}
+
 .actions {
     display: flex;
     gap: 1em;

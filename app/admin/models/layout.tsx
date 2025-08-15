@@ -29,7 +29,7 @@ export default function ModelsLayout({children}: Readonly <{
                     })
                 }
             </div>
-            <div>
+            <div className={modelStyles.modelTableContainer}>
                 {children}
             </div>
         </div>
