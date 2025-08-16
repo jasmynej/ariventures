@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import {City} from "@/types";
 import tableStyles from '@/styles/tables.module.css'
 import buttonStyles from '@/styles/buttons.module.css'
+import models from '@/styles/admin/models.module.css'
 import {fetchAllCities} from "@/lib/model";
 export default function AdminCitiesPage(){
     const [cities, setCities] = useState<City[]>([])
@@ -29,8 +30,11 @@ export default function AdminCitiesPage(){
                         return (
                             <tr key={city.id} className={tableStyles.primaryTableRow}>
                                 <td>
-                                    <img src={city.country.flag_img} alt={city.country.name}/>
-                                    {city.country.name}
+                                    <div className={models.imgFlagBox}>
+                                        <img src={city.country.flag_img} alt={city.country.name}/>
+                                        {city.country.name}
+                                    </div>
+
                                 </td>
                                 <td>{city.name}</td>
                                 <td>{city.state_province == "" ? '-' :city.state_province }</td>

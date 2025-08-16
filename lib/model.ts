@@ -7,10 +7,7 @@ async function fetchAllCities(): Promise<City[]>{
 }
 
 async function fetchAllVisaStatus(page: number, includeNulls: boolean, pageSize: number): Promise<VisaStatusResponse> {
-    const visaStatuses = await axios.get(`/api/visa-status?
-    page=${page}&
-    pageSize=${pageSize}&
-    includeNulls=${includeNulls}`)
+    const visaStatuses = await axios.get(`/api/visa-status?page=${page}&pageSize=${pageSize}&includeNulls=${includeNulls}`)
     return visaStatuses.data
 }
 

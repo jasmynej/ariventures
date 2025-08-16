@@ -4,11 +4,20 @@ import buttonStyles from '@/styles/buttons.module.css'
 import {useState, useEffect} from "react";
 import {VisaStatus, VisaStatusResponse} from "@/types";
 import {fetchAllVisaStatus} from "@/lib/model";
-
+import models from "@/styles/admin/models.module.css"
+import VisaStatusLabel from "@/components/VisaStatusLabel";
 export default function AdminVisaStatus(){
     const [visas, setVisas] = useState<VisaStatus[]>([])
-    const [curPage,setCurPage] = useState<number>(1)
+    const [curPage,setPage] = useState<number>(1)
     const [totalPages, setTotalPages] = useState<number>(0)
+
+    const changePage = (page: number) => {
+        if(page < 1 || page > totalPages) {
+            page = 1;
+        }
+
+        setPage(page);
+    }
 
     useEffect(() => {
         fetchAllVisaStatus(curPage, false, 200)
@@ -16,11 +25,13 @@ export default function AdminVisaStatus(){
                 setVisas(data.visas)
                 setTotalPages(data.totalPages)
             })
-    }, []);
+    }, [curPage]);
     return (
 
         <div>
+            <div>Filters</div>
             <div className={tableStyles.primaryTableWrapper}>
+
                 <table className={tableStyles.primaryTable}>
                     <thead className={tableStyles.primaryTableHeader}>
                     <tr>
@@ -36,15 +47,21 @@ export default function AdminVisaStatus(){
                             return(
                                 <tr key={visa.id} className={tableStyles.primaryTableRow}>
                                     <td>
-                                        <img src={visa.passport.flag_img} alt={visa.passport.name}/>
-                                        {visa.passport.name}
+                                        <div className={models.imgFlagBox}>
+                                            <img src={visa.passport.flag_img} alt={visa.passport.name}/>
+                                            {visa.passport.name}
+                                        </div>
+
                                     </td>
                                     <td>
-                                        <img src={visa.destination.flag_img} alt={visa.destination.name}/>
-                                        {visa.destination.name}
+                                        <div className={models.imgFlagBox}>
+                                            <img src={visa.destination.flag_img} alt={visa.destination.name}/>
+                                            {visa.destination.name}
+                                        </div>
+
                                     </td>
                                     <td>
-                                        {visa.status}
+                                        <VisaStatusLabel label={visa.status}/>
                                     </td>
                                     <td>
                                         {visa.notes}
@@ -65,6 +82,16 @@ export default function AdminVisaStatus(){
                         })}
                     </tbody>
                 </table>
+
+            </div>
+            <div className={models.pagination}>
+                <div onClick={() => changePage(curPage - 1)}>
+                    <i className="fi fi-tr-angle-circle-left"></i>
+                </div>
+                <div>{curPage} out of {totalPages}</div>
+                <div onClick={() => changePage(curPage + 1)}>
+                    <i className="fi fi-tr-angle-circle-right"></i>
+                </div>
             </div>
         </div>
     )

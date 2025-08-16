@@ -1,20 +1,38 @@
 import {NextRequest, NextResponse} from "next/server";
-import {getAllVisaStatus} from "@/repo/visa";
+import {getAllVisaStatus, getStatus} from "@/repo/visa";
+import {VisaFilterParams} from "@/types";
 
 export async function GET(req: NextRequest){
     const searchParams = req.nextUrl.searchParams
-    const pageParam = searchParams.get('page');
-    const pageSizeParam = searchParams.get('pageSize');
-    const pageSize = pageSizeParam && !isNaN(parseInt(pageSizeParam))
-        ? parseInt(pageSizeParam)
-        : 100;
+    if(searchParams.has('page')){
+        const page = parseInt(searchParams.get("page") || "1")
+        const pageSize = parseInt(searchParams.get("pageSize") || "100")
+        const includeNulls = searchParams.get('includeNulls') === 'true';
 
-    // Failsafe: default to includeNulls = false if not provided or invalid
-    const includeNullsParam = searchParams.get('includeNulls');
-    const includeNulls = includeNullsParam === 'true';
+        console.log(includeNulls)
+        // Optional filters
+        const status = searchParams.get("status");
+        const passportParam = searchParams.get("passport");
+        const destinationParam = searchParams.get("destination");
 
-    // Failsafe: default to page 1 if not provided or invalid
-    const page = pageParam && !isNaN(parseInt(pageParam)) ? parseInt(pageParam) : 1;
-    const visas = await getAllVisaStatus(pageSize, page, includeNulls)
-    return NextResponse.json(visas)
+        const filters: VisaFilterParams = {
+            status: status || null,
+            passport: passportParam ? parseInt(passportParam) : null,
+            destination: destinationParam ? parseInt(destinationParam) : null,
+        };
+
+
+        const visas = await getAllVisaStatus(pageSize, page, includeNulls, filters)
+        return NextResponse.json(visas)
+    }
+    else if (searchParams.has("passport")){
+        const passport = parseInt(searchParams.get("passport") || "1")
+        const destination = parseInt(searchParams.get("destination") || "2")
+
+        const visa = await getStatus(passport, destination)
+        return NextResponse.json(visa[0])
+    }
+    else {
+        return NextResponse.json({ error: "No valid query parameters provided" }, { status: 400 });
+    }
 }

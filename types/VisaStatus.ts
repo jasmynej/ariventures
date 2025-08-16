@@ -15,3 +15,14 @@ export type VisaStatusResponse = {
     pageSize: number
     totalPages: number
 }
+
+export type UpdateVisaStatus = {
+    status: string
+    notes: string
+}
+
+export type VisaFilterParams = {
+    status: string | null
+    passport: number | null
+    destination: number | null
+}

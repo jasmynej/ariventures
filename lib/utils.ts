@@ -6,5 +6,12 @@ function formatDate(isoString: string): string {
         day: "numeric",
     });
 }
+function enumToText(value: string): string {
+    return value.replace(/_/g, ' ');
+}
+function enumToCssId(value: string): string {
+    const lastWord = value.split('_').pop()?.toLowerCase();
+    return lastWord ? `${lastWord}` : '';
+}
 
-export { formatDate };
+export { formatDate, enumToText, enumToCssId };

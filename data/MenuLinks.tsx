@@ -23,7 +23,7 @@ const adminSideNavLinks: NavLinks = [
     },
     {
         label: "Data Models",
-        href: "/admin/models/countries",
+        href: "/admin/models",
         icon: <i className="fi fi-tr-folder-open"></i>
     }
 ]
