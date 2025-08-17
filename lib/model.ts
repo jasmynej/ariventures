@@ -1,5 +1,5 @@
 import axios from "axios";
-import {City, VisaStatusResponse} from "@/types";
+import {City, VisaStatus, VisaStatusResponse} from "@/types";
 
 async function fetchAllCities(): Promise<City[]>{
     const cities = await axios.get('/api/cities')
@@ -11,4 +11,8 @@ async function fetchAllVisaStatus(page: number, includeNulls: boolean, pageSize:
     return visaStatuses.data
 }
 
-export {fetchAllCities, fetchAllVisaStatus}
+async function fetchVisaStatus(passport: number | undefined, destination: number | undefined): Promise<VisaStatus>{
+    const visaStatus = await axios.get(`/api/visa-status?passport=${passport}&destination=${destination}`)
+    return visaStatus.data
+}
+export {fetchAllCities, fetchAllVisaStatus, fetchVisaStatus}
