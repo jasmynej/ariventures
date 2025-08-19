@@ -1,0 +1,32 @@
+.row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.flagCountry {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flagCountry img {
+    width: 3em;
+    height: 2em;
+}
+
+.title {
+    font-weight: 300;
+}
+
+.statusResultContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(52, 51, 51, 0.10);
+    background: #FFF;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10), 0 4px 6px 0 rgba(0, 0, 0, 0.10);
+    width: 40em;
+    padding: 15px;
+}

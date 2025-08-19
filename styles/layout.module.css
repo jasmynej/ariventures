@@ -33,6 +33,13 @@
     padding: 3.125rem 6.25rem;
 }
 
+.sectionSmall {
+    padding-left:3.125rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 .section_bg_img {
     position: relative;
     padding: 3.125rem 6.25rem;

@@ -1,5 +1,8 @@
 import axios from "axios";
+import {createClient} from "@/lib/client";
 import {Countries} from "@/types";
+
+const supabase = createClient();
 
 async function getAllCountries () {
     const response = await axios.get("/api/countries");
@@ -7,4 +10,8 @@ async function getAllCountries () {
     return countries;
 }
 
-export {getAllCountries};
+async function getCountriesWithVisaStatus(): Promise<Countries> {
+    const { data: countries} = await supabase.rpc("get_passport_info_with_status")
+    return countries
+}
+export {getAllCountries, getCountriesWithVisaStatus};

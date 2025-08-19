@@ -23,3 +23,46 @@
     align-items: center;
     font-size: 1.2rem;
 }
+
+.modelTableContainer {
+    padding: 10px;
+}
+
+.pagination {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+    margin-top:10px;
+    align-items: center;
+}
+
+.pagination i {
+    font-size: 25px;
+}
+
+.pagination i:hover {
+    color: var(--secondary-mauve)
+}
+.statusLabel {
+    width: max-content;
+    text-align: center;
+    padding: .5em;
+    border-radius: 25px;
+    color: var(--ecru);
+    margin: 2px;
+}
+
+.required {
+    background-color: var(--red);
+
+}
+
+.free {
+    background-color: var(--green);
+}
+
+.imgFlagBox {
+    display: flex;
+    gap: 5px;
+}
