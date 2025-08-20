@@ -5,30 +5,23 @@ import text from "@/styles/typography.module.css"
 import blog from "@/styles/blog.module.css"
 import pageContent from '@/data/content/blog.json'
 import WpBlogCard from "@/components/WpBlogCard";
-import {wp} from "@/wordpress/client";
-import {GetAllPostsDocument, GetAllPostsQuery} from "@/wordpress/gql/graphql";
+import {fetchWpBlogPosts} from "@/lib/blogFunctions";
+import {CategoryNode, TagNode, PostNode} from "@/types";
 
-type CategoryNode =
-    NonNullable<
-        NonNullable<GetAllPostsQuery["categories"]>["nodes"]
-    >[number];
 
-type TagNode =
-    NonNullable<
-        NonNullable<GetAllPostsQuery["tags"]>["nodes"]
-    >[number];
 export default function AllBlogPosts() {
-    const [posts, setPosts] = useState<NonNullable<GetAllPostsQuery['posts']>['nodes']>([])
+    const [posts, setPosts] = useState<PostNode[]>([])
     const [categories, setCategories] = useState<CategoryNode[]>([])
     const [tags, setTags] = useState<TagNode[]>([])
     const vars = {first: 11}
     useEffect(() => {
-        wp.request(GetAllPostsDocument, vars).then((data)=> {
+        fetchWpBlogPosts(vars.first, '').then((data) => {
             console.log(data)
             setPosts(data.posts?.nodes ?? [])
             setCategories((data.categories?.nodes ?? []).filter(Boolean) as CategoryNode[])
             setTags((data.tags?.nodes ?? []).filter(Boolean) as TagNode[])
-        })
+         }
+        )
     }, [vars]);
 
     if (!posts || posts.length === 0 || !posts[0]) {

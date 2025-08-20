@@ -3,8 +3,19 @@ import axios, {AxiosResponse} from "axios";
 import {BlogStatus} from "@/types/Blog";
 import {getOrCreateCategory, getOrCreateTags, insertBlogTags} from "@/repo/blog";
 import {wp} from "@/wordpress/client";
-import {GetPostBySlugDocument, GetPostBySlugQuery} from "@/wordpress/gql/graphql";
+import {
+    GetPostBySlugDocument,
+    GetPostBySlugQuery,
+    GetAllPostsDocument,
+    GetAllPostsQuery,
+    RootQueryToPostConnectionWhereArgs, PostObjectsConnectionOrderbyEnum, OrderEnum, PostStatusEnum
+} from "@/wordpress/gql/graphql";
 
+
+const defaultWhere: RootQueryToPostConnectionWhereArgs = {
+    status: 'PUBLISH' as PostStatusEnum,
+    orderby: [{ field: 'DATE' as PostObjectsConnectionOrderbyEnum, order: 'DESC' as OrderEnum }],
+};
 function createSlug(title: string) {
     return title
         .toLowerCase()
@@ -55,18 +66,13 @@ async function newBlogPostApi(newPost: NewBlogPost, status: BlogStatus) {
     }
 }
 
-async function fetchBlogPosts(): Promise<BlogPosts> {
-    const postsResponse: AxiosResponse = await axios.get('/api/blog');
-    return postsResponse.data;
-}
-
-async function fetchBlogPost(slug: string): Promise<BlogPost> {
-    const postResponse: AxiosResponse = await axios.get(`/api/blog/${slug}`);
-    return postResponse.data;
-}
 
 async function fetchWpBlogPost(slug: string): Promise<GetPostBySlugQuery> {
     return await wp.request(GetPostBySlugDocument, {slug})
+}
+
+async function fetchWpBlogPosts(first: number, after: string, where: RootQueryToPostConnectionWhereArgs = defaultWhere): Promise<GetAllPostsQuery> {
+    return await wp.request(GetAllPostsDocument, {first, after, where})
 }
 async function fetchCategories(): Promise<BlogCategory[]> {
     const res = await fetch("/api/blog/categories");
@@ -74,18 +80,6 @@ async function fetchCategories(): Promise<BlogCategory[]> {
     return res.json();
 }
 
-
-async function fetchTags(): Promise<BlogTag[]> {
-    const res = await fetch("/api/blog/tags");
-    if (!res.ok) throw new Error("Failed to fetch tags");
-    return res.json();
-}
-
-async function fetchCategoryBySlug(slug: string): Promise<BlogCategory> {
-    const res = await fetch("/api/blog/category/" + slug);
-    if (!res.ok) throw new Error("Failed to fetch category with slug: "+slug);
-    return res.json();
-}
 
 function getBlogExcerpt(excerpt: string | null | undefined, maxLength = 100): string {
     if (!excerpt) return "";
@@ -101,11 +95,8 @@ function getBlogExcerpt(excerpt: string | null | undefined, maxLength = 100): st
 export {
     createSlug,
     newBlogPostApi,
-    fetchBlogPost,
-    fetchBlogPosts,
-    fetchTags,
     fetchCategories,
-    fetchCategoryBySlug,
     getBlogExcerpt,
-    fetchWpBlogPost
+    fetchWpBlogPost,
+    fetchWpBlogPosts
 };

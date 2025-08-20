@@ -3,25 +3,24 @@ import { useRouter } from 'next/navigation';
 import {useState, useEffect} from 'react';
 import buttons from '@/styles/buttons.module.css'
 import layout from '@/styles/layout.module.css'
-import {BlogPosts} from "@/types";
-import {getAllBlogPosts, deleteBlogPost} from "@/repo/blog";
+import {PostNode} from "@/types";
+import {fetchWpBlogPosts} from "@/lib/blogFunctions";
 import tables from "@/styles/tables.module.css"
 import tableStyles from "@/styles/tables.module.css";
 import buttonStyles from "@/styles/buttons.module.css";
+import {OrderEnum, PostObjectsConnectionOrderbyEnum, RootQueryToPostConnectionWhereArgs} from "@/wordpress/gql/graphql";
 export default function AdminBlog(){
     const router = useRouter();
-    const [posts, setPosts] = useState<BlogPosts>([]);
-
-    useEffect(() => {
-        getAllBlogPosts().then(posts => setPosts(posts));
-    }, []);
-
-    const deletePost = (id: string) => {
-        deleteBlogPost(id).then(() => {
-            console.log('deleted '+ id)
-            setPosts(prev => prev.filter(post => post.id !== id));
-        })
+    const [posts, setPosts] = useState<PostNode[]>([]);
+    const whereQuery  : RootQueryToPostConnectionWhereArgs = {
+        orderby: [{ field: 'DATE' as PostObjectsConnectionOrderbyEnum, order: 'DESC' as OrderEnum }]
     }
+    useEffect(() => {
+        fetchWpBlogPosts(100, '', whereQuery)
+            .then((data)=> {
+                setPosts((data.posts?.nodes ?? []).filter(Boolean) as PostNode[])
+            })
+    }, []);
 
     return (
         <div className={layout.section}>
@@ -34,7 +33,6 @@ export default function AdminBlog(){
                     <thead className={tables.primaryTableHeader}>
                             <tr>
                                 <th>Title</th>
-                                <th>Category</th>
                                 <th>Date</th>
                                 <th>Status</th>
                                 <th>Actions</th>
@@ -48,18 +46,12 @@ export default function AdminBlog(){
                                     <div></div>
                                     <p>{post.title}</p>
                                 </td>
-                                <td>{post.category.name}</td>
-                                <td>{post.published_at}</td>
+                                <td>{post.date}</td>
                                 <td>{post.status}</td>
                                 <td>
                                     <div className={tableStyles.actions}>
                                         <button className={buttonStyles.edit}>
                                             <i className="fi fi-tr-pen-square"></i>
-                                        </button>
-                                        <button
-                                            onClick={() => {deletePost(post.id)}}
-                                            className={buttonStyles.trash}>
-                                            <i className="fi fi-tr-trash-xmark"></i>
                                         </button>
                                     </div>
                                 </td>

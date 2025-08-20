@@ -1,4 +1,4 @@
-query GetAllPosts($first: Int!, $after: String) {
+query GetAllPosts($first: Int!, $after: String, $where: RootQueryToPostConnectionWhereArgs) {
     categories {
         nodes {
             name
@@ -14,14 +14,15 @@ query GetAllPosts($first: Int!, $after: String) {
     posts(
         first: $first
         after: $after
-        where: { status: PUBLISH, orderby: { field: DATE, order: DESC } }
+        where: $where
     ) {
         pageInfo {
             hasNextPage,
             endCursor
         }
         nodes {
-           ...PostCardFields
+           ...PostCardFields,
+            status
         }
     }
 }
