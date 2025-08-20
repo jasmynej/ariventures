@@ -1,3 +1,4 @@
+
 export enum BlogStatus {
     DRAFT = 'DRAFT',
     PUBLISHED = 'PUBLISHED',
@@ -60,3 +61,4 @@ export type BlogPostTag = {
     tag_id: number;
 }
 export type BlogPosts = BlogPost[];
+

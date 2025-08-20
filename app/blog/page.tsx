@@ -1,23 +1,35 @@
 'use client'
 import {useEffect, useState} from "react";
-import {BlogPosts} from "@/types";
-import {fetchBlogPosts} from "@/lib/blogFunctions";
-import {useRouter} from "next/navigation";
 import layout from "@/styles/layout.module.css"
 import text from "@/styles/typography.module.css"
 import blog from "@/styles/blog.module.css"
-import BlogCard from "@/components/BlogCard";
 import pageContent from '@/data/content/blog.json'
-export default function AllBlogPosts() {
-    const [posts, setPosts] = useState<BlogPosts>([]);
+import WpBlogCard from "@/components/WpBlogCard";
+import {wp} from "@/wordpress/client";
+import {GetAllPostsDocument, GetAllPostsQuery} from "@/wordpress/gql/graphql";
 
-    const router = useRouter();
+type CategoryNode =
+    NonNullable<
+        NonNullable<GetAllPostsQuery["categories"]>["nodes"]
+    >[number];
+
+type TagNode =
+    NonNullable<
+        NonNullable<GetAllPostsQuery["tags"]>["nodes"]
+    >[number];
+export default function AllBlogPosts() {
+    const [posts, setPosts] = useState<NonNullable<GetAllPostsQuery['posts']>['nodes']>([])
+    const [categories, setCategories] = useState<CategoryNode[]>([])
+    const [tags, setTags] = useState<TagNode[]>([])
+    const vars = {first: 11}
     useEffect(() => {
-        fetchBlogPosts().then(data => {
+        wp.request(GetAllPostsDocument, vars).then((data)=> {
             console.log(data)
-            setPosts(data)
-        });
-    }, []);
+            setPosts(data.posts?.nodes ?? [])
+            setCategories((data.categories?.nodes ?? []).filter(Boolean) as CategoryNode[])
+            setTags((data.tags?.nodes ?? []).filter(Boolean) as TagNode[])
+        })
+    }, [vars]);
 
     if (!posts || posts.length === 0 || !posts[0]) {
         return <div className={layout.section}><p>Loading...</p></div>;
@@ -38,13 +50,13 @@ export default function AllBlogPosts() {
                     <div>
                         {/* Featured Post */}
                         <div className={blog.featuredPost}>
-                            <BlogCard post={posts[0]} featured />
+                            <WpBlogCard post={posts[0]} featured />
                         </div>
 
                         {/* Grid of other posts */}
                         <div className={blog.blogGrid}>
                             {posts.slice(1).map((post) => (
-                                <BlogCard key={post.id} post={post} />
+                                <WpBlogCard key={post.id} post={post} />
                             ))}
                         </div>
                     </div>
@@ -55,9 +67,23 @@ export default function AllBlogPosts() {
                         </div>
                         <div className={blog.sidePanelSection}>
                             <h3>Categories</h3>
+                            {
+                                categories.map((category)=> (
+                                    <div key={category.slug}>
+                                        <p>{category.name}</p>
+                                    </div>
+                                ))
+                            }
                         </div>
                         <div className={blog.sidePanelSection}>
                             <h3>Tags</h3>
+                            {
+                                tags.map((tag)=> (
+                                    <div key={tag.slug}>
+                                        <p>{tag.name}</p>
+                                    </div>
+                                ))
+                            }
                         </div>
                         <div className={blog.sidePanelSection}>
                             <h3>Subscribe</h3>

@@ -1,16 +1,9 @@
-import {
-    BlogCategory,
-    BlogPost,
-    BlogPosts,
-    BlogTag,
-    MediaUploadOptions,
-    NewBlogPost,
-    NewPostRequest
-} from "@/types";
-import {uploadMedia} from "@/lib/media";
+import {BlogCategory, BlogPost, BlogPosts, BlogTag, NewBlogPost, NewPostRequest} from "@/types";
 import axios, {AxiosResponse} from "axios";
 import {BlogStatus} from "@/types/Blog";
 import {getOrCreateCategory, getOrCreateTags, insertBlogTags} from "@/repo/blog";
+import {wp} from "@/wordpress/client";
+import {GetPostBySlugDocument, GetPostBySlugQuery} from "@/wordpress/gql/graphql";
 
 function createSlug(title: string) {
     return title
@@ -71,6 +64,10 @@ async function fetchBlogPost(slug: string): Promise<BlogPost> {
     const postResponse: AxiosResponse = await axios.get(`/api/blog/${slug}`);
     return postResponse.data;
 }
+
+async function fetchWpBlogPost(slug: string): Promise<GetPostBySlugQuery> {
+    return await wp.request(GetPostBySlugDocument, {slug})
+}
 async function fetchCategories(): Promise<BlogCategory[]> {
     const res = await fetch("/api/blog/categories");
     if (!res.ok) throw new Error("Failed to fetch categories");
@@ -90,15 +87,11 @@ async function fetchCategoryBySlug(slug: string): Promise<BlogCategory> {
     return res.json();
 }
 
-function getBlogExcerpt(content: any, maxLength = 100): string {
-    const paragraph = content.blocks.find(
-        (block: any) => block.type === "paragraph"
-    );
+function getBlogExcerpt(excerpt: string | null | undefined, maxLength = 100): string {
+    if (!excerpt) return "";
 
-    if (!paragraph) return "";
-
-    // Remove inline HTML tags (e.g., <b>, <i>, etc.)
-    const plainText = paragraph.data.text.replace(/<[^>]+>/g, "");
+    // Strip all HTML tags
+    const plainText = excerpt.replace(/<[^>]+>/g, "").trim();
 
     return plainText.length > maxLength
         ? plainText.slice(0, maxLength).trim() + "..."
@@ -114,4 +107,5 @@ export {
     fetchCategories,
     fetchCategoryBySlug,
     getBlogExcerpt,
+    fetchWpBlogPost
 };

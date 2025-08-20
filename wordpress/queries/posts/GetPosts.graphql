@@ -1,0 +1,27 @@
+query GetAllPosts($first: Int!, $after: String) {
+    categories {
+        nodes {
+            name
+            slug
+        }
+    }
+    tags {
+        nodes {
+            name
+            slug
+        }
+    }
+    posts(
+        first: $first
+        after: $after
+        where: { status: PUBLISH, orderby: { field: DATE, order: DESC } }
+    ) {
+        pageInfo {
+            hasNextPage,
+            endCursor
+        }
+        nodes {
+           ...PostCardFields
+        }
+    }
+}
