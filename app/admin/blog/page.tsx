@@ -39,11 +39,10 @@ export default function AdminBlog(){
                             </tr>
                     </thead>
                     <tbody>
-                    {posts.map((post, i) => {
+                    {posts.map((post) => {
                         return (
                             <tr key={post.id}>
                                 <td>
-                                    <div></div>
                                     <p>{post.title}</p>
                                 </td>
                                 <td>{post.date}</td>
@@ -52,6 +51,9 @@ export default function AdminBlog(){
                                     <div className={tableStyles.actions}>
                                         <button className={buttonStyles.edit}>
                                             <i className="fi fi-tr-pen-square"></i>
+                                        </button>
+                                        <button>
+                                            <i className="fi fi-rr-eye"></i>
                                         </button>
                                     </div>
                                 </td>
