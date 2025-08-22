@@ -131,4 +131,13 @@
     .hamburger {
         display: flex;
     }
+    .section {
+        padding: 2em;
+    }
+
+    .section_bg_img {
+        padding: 1rem;
+
+    }
+
 }

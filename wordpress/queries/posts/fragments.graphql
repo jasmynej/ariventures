@@ -1,0 +1,22 @@
+fragment PostCardFields on Post {
+    id
+    title
+    date
+    slug
+    excerpt
+    date
+    featuredImage {
+        node { sourceUrl altText }
+    }
+    categories {
+        nodes {
+            name
+        }
+    }
+    tags {
+        nodes {
+            name
+        }
+    }
+
+}

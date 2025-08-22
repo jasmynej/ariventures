@@ -1,4 +1,6 @@
+/* ========== Base (Mobile-first) ========== */
 
+/* Cover image */
 .coverImageContainer {
     width: 100%;
     display: flex;
@@ -8,94 +10,181 @@
 .coverImage {
     background-size: cover;
     background-position: center top;
-    height: 31.25em;
+    width: 100%;
+    /* Keep it reasonable on phones */
+    aspect-ratio: 16 / 9; /* fallback height for mobile */
 }
 
-.blogGrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Always two equal-width columns */
-    gap: 1rem;
-    width: 100%; /* or a max-width if needed */
+/* Blog layout */
+.blogPageContainer {
+    display: flex;
+    flex-direction: column; /* stack on mobile */
+    gap: 1.5rem;
+    width: 100%;
+
 }
+
+/* Grid becomes a simple vertical stack on mobile */
+.blogGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    align-items: stretch;
+}
+
 .featuredPost {
     width: 100%;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
 }
-
-@media (min-width: 768px) {
-    .blogGrid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .featuredPost {
-        grid-column: 1 / -1; /* still span full width */
-    }
-}
-
-@media (min-width: 1024px) {
-
-
-    .featuredPost {
-        grid-column: span 2;
-        grid-row: span 2;
-    }
-}
-
-.blogPageContainer {
+.allPosts {
     width: 100%;
-    display: flex;
-    gap: 2em;
 }
 
+/* Hide side panel on mobile */
+.sideSections {
+    display: none;
+}
+
+/* Side panel sections (when visible at larger sizes) */
 .sidePanelSection {
     background-color: white;
     display: flex;
     flex-direction: column;
-    padding: .5em;
+    padding: 0.5em;
     margin-bottom: 1rem;
 }
-
 .sidePanelSection h3 {
-    font-family: var(--font-body) sans-serif;
+    font-family: var(--font-body), sans-serif;
     font-weight: 400;
 }
 
-.sideSections {
-    width: 30em;
-}
-
-.blogPanel {
-}
-
+/* Blog post page */
 .blogPostContainer {
-    padding: 3.125rem 6.25rem;
+    width: 100%;
+    padding: 1.5rem 1rem;
+    display: flex;/* softer on mobile */
 }
 
 .postContent {
-    width: 50em;
+    width: 100%;
+    max-width: 50rem; /* constrain text width for readability */
+    margin: 0 auto;
 }
 
 .postTitle {
-    font-size: 3em;
-    color: var(--secondary-mocha)
+    font-size: 2rem; /* scale down for mobile */
+    line-height: 1.2;
+    color: var(--secondary-mocha);
+    margin: 0.25em 0 0.5em;
 }
 
 .postMetadata {
     display: flex;
-    gap: .5em;
+    gap: 0.5em;
     align-items: center;
-    font-size: 1.2em;
+    font-size: 1rem;
+    flex-wrap: wrap;
 }
 
 .category {
     background-color: var(--primary-blush);
     color: var(--secondary-mocha);
-    padding: 3px;
-    border-radius: 3px;
+    padding: 3px 6px;
+    border-radius: 4px;
 }
 
 .date {
     color: var(--gray);
-    font-weight: lighter;
+    font-weight: 300;
+}
 
+/* Optional: panel wrapper (kept for future desktop use) */
+.blogPanel {}
+
+.postTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.postTags span {
+    background-color: var(--primary-rose);
+    color: white;
+    padding: 3px;
+    border-radius: 2px;
+}
+/* ========== Tablet (>= 768px) ========== */
+
+@media (min-width: 768px) {
+    .coverImage {
+        /* a bit taller on tablet/desktop */
+        aspect-ratio: auto;
+        height: 24rem;
+    }
+
+    .blogPageContainer {
+        flex-direction: row;           /* bring side panel next to content */
+        justify-content: center;
+        align-items: flex-start;
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    .blogGrid {
+        display: grid;                 /* switch to grid */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .featuredPost {
+        grid-column: 1 / -1;           /* full width across two columns */
+        margin-bottom: 2rem;
+    }
+
+    .allPosts {
+        width: 80em;                   /* matches your original constraint */
+        max-width: 100%;
+    }
+
+    .sideSections {
+        display: block;                /* show side panel */
+        width: 30%;
+        min-width: 22rem;
+    }
+
+    .blogPostContainer {
+        padding: 3rem 2rem;
+    }
+
+    .postTitle {
+        font-size: 2.5rem;
+    }
+
+    .postMetadata {
+        font-size: 1.1rem;
+    }
+}
+
+
+/* ========== Desktop (>= 1024px) ========== */
+
+@media (min-width: 1024px) {
+    .coverImage {
+        height: 31.25em; /* your original desktop height */
+    }
+
+    .featuredPost {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .blogPageContainer {
+        width: 100%;
+        padding: 3rem 4rem;
+    }
+
+    .postTitle {
+        font-size: 3rem;
+    }
 }

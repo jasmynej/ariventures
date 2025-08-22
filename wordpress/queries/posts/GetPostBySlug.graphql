@@ -1,0 +1,23 @@
+query GetPostBySlug($slug: ID!) {
+    post(id: $slug, idType: SLUG){
+        ...PostCardFields,
+        content,
+        author {
+            node {
+                name
+            }
+        },
+        categories {
+            nodes {
+                name
+            }
+        },
+        tags {
+            nodes {
+                slug,
+                name
+            }
+        }
+    }
+
+}

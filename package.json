@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "codegen": "graphql-codegen --config codegen.ts",
+    "predev": "npm run codegen"
   },
   "dependencies": {
     "@editorjs/attaches": "^1.3.0",
@@ -25,8 +27,11 @@
     "@supabase/supabase-js": "^2.50.2",
     "@svgr/webpack": "^8.1.0",
     "axios": "^1.10.0",
+    "date-fns": "^4.1.0",
     "editorjs-blocks-react-renderer": "^1.3.0",
     "editorjs-color-picker": "^1.0.8",
+    "graphql-request": "^7.2.0",
+    "html-react-parser": "^5.2.6",
     "next": "15.3.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -35,6 +40,9 @@
     "uuid": "^11.1.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "5.0.7",
+    "@graphql-codegen/client-preset": "4.8.3",
+    "@graphql-codegen/introspection": "4.0.3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

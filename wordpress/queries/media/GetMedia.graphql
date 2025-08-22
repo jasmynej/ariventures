@@ -1,0 +1,11 @@
+query GetAllMediaQuery{
+    mediaItems {
+        nodes {
+            id
+            title
+            altText
+            sourceUrl
+            mediaType
+        }
+    }
+}

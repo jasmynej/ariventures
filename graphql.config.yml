@@ -1,0 +1,2 @@
+schema: https://ariventures.co/graphql
+documents: 'wordpress/queries/**/*.graphql'

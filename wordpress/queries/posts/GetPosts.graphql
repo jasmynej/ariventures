@@ -1,0 +1,30 @@
+query GetAllPosts($first: Int!, $after: String, $where: RootQueryToPostConnectionWhereArgs) {
+    categories {
+        nodes {
+            id
+            name
+            slug
+        }
+    }
+    tags {
+        nodes {
+            id
+            name
+            slug
+        }
+    }
+    posts(
+        first: $first
+        after: $after
+        where: $where
+    ) {
+        pageInfo {
+            hasNextPage,
+            endCursor
+        }
+        nodes {
+           ...PostCardFields,
+            status
+        }
+    }
+}
