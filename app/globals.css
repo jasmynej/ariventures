@@ -32,6 +32,9 @@
     font-display: swap;
 }
 
+html, body { overflow-x: hidden; }
+* { box-sizing: border-box; }
+img, video { max-width: 100%; height: auto; }
 
 :root {
     /* Colors */
@@ -74,6 +77,10 @@
     --space-md: 16px;
     --space-lg: 24px;
     --space-xl: 40px;
+
+    --container-pad-x: 1rem;
+    --container-pad-y: 1.5rem;
+
 }
 
 body {

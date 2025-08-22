@@ -8,4 +8,15 @@ fragment PostCardFields on Post {
     featuredImage {
         node { sourceUrl altText }
     }
+    categories {
+        nodes {
+            name
+        }
+    }
+    tags {
+        nodes {
+            name
+        }
+    }
+
 }

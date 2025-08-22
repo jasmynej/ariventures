@@ -48,12 +48,15 @@ export default function BlogPost() {
 
                 {/* content is HTML from WP */}
                 <div className="prose">{parse(post.content ?? '')}</div>
-
                 {post.tags?.nodes?.length ? (
-                    <ul className={blogStyles.tags}>
-                        {post.tags.nodes.map(t => t && <li key={t.name}>{t.name}</li>)}
-                    </ul>
+                        <div className={blogStyles.postTags}>
+                            {post.tags.nodes.map(t =>
+                                t && <span key={t.name}>{t.name}</span>)}
+                        </div>
+
                 ) : null}
+
+
             </div>
         </div>
     );

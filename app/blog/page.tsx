@@ -22,7 +22,7 @@ export default function AllBlogPosts() {
             setTags((data.tags?.nodes ?? []).filter(Boolean) as TagNode[])
          }
         )
-    }, [vars]);
+    }, []);
 
     if (!posts || posts.length === 0 || !posts[0]) {
         return <div className={layout.section}><p>Loading...</p></div>;
@@ -36,11 +36,8 @@ export default function AllBlogPosts() {
                 <h3 className={text.pageTagline}>{pageContent.subtitle}</h3>
             </div>
             <div className={layout.section}>
-                <p>{pageContent.description}</p>
-            </div>
-            <div className={layout.section}>
                 <div className={blog.blogPageContainer}>
-                    <div>
+                    <div className={blog.allPosts}>
                         {/* Featured Post */}
                         <div className={blog.featuredPost}>
                             <WpBlogCard post={posts[0]} featured />

@@ -17,13 +17,13 @@ type Documents = {
     "query GetAllMediaQuery {\n  mediaItems {\n    nodes {\n      id\n      title\n      altText\n      sourceUrl\n      mediaType\n    }\n  }\n}": typeof types.GetAllMediaQueryDocument,
     "query GetPostBySlug($slug: ID!) {\n  post(id: $slug, idType: SLUG) {\n    ...PostCardFields\n    content\n    author {\n      node {\n        name\n      }\n    }\n    categories {\n      nodes {\n        name\n      }\n    }\n    tags {\n      nodes {\n        slug\n        name\n      }\n    }\n  }\n}": typeof types.GetPostBySlugDocument,
     "query GetAllPosts($first: Int!, $after: String, $where: RootQueryToPostConnectionWhereArgs) {\n  categories {\n    nodes {\n      id\n      name\n      slug\n    }\n  }\n  tags {\n    nodes {\n      id\n      name\n      slug\n    }\n  }\n  posts(first: $first, after: $after, where: $where) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    nodes {\n      ...PostCardFields\n      status\n    }\n  }\n}": typeof types.GetAllPostsDocument,
-    "fragment PostCardFields on Post {\n  id\n  title\n  date\n  slug\n  excerpt\n  date\n  featuredImage {\n    node {\n      sourceUrl\n      altText\n    }\n  }\n}": typeof types.PostCardFieldsFragmentDoc,
+    "fragment PostCardFields on Post {\n  id\n  title\n  date\n  slug\n  excerpt\n  date\n  featuredImage {\n    node {\n      sourceUrl\n      altText\n    }\n  }\n  categories {\n    nodes {\n      name\n    }\n  }\n  tags {\n    nodes {\n      name\n    }\n  }\n}": typeof types.PostCardFieldsFragmentDoc,
 };
 const documents: Documents = {
     "query GetAllMediaQuery {\n  mediaItems {\n    nodes {\n      id\n      title\n      altText\n      sourceUrl\n      mediaType\n    }\n  }\n}": types.GetAllMediaQueryDocument,
     "query GetPostBySlug($slug: ID!) {\n  post(id: $slug, idType: SLUG) {\n    ...PostCardFields\n    content\n    author {\n      node {\n        name\n      }\n    }\n    categories {\n      nodes {\n        name\n      }\n    }\n    tags {\n      nodes {\n        slug\n        name\n      }\n    }\n  }\n}": types.GetPostBySlugDocument,
     "query GetAllPosts($first: Int!, $after: String, $where: RootQueryToPostConnectionWhereArgs) {\n  categories {\n    nodes {\n      id\n      name\n      slug\n    }\n  }\n  tags {\n    nodes {\n      id\n      name\n      slug\n    }\n  }\n  posts(first: $first, after: $after, where: $where) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    nodes {\n      ...PostCardFields\n      status\n    }\n  }\n}": types.GetAllPostsDocument,
-    "fragment PostCardFields on Post {\n  id\n  title\n  date\n  slug\n  excerpt\n  date\n  featuredImage {\n    node {\n      sourceUrl\n      altText\n    }\n  }\n}": types.PostCardFieldsFragmentDoc,
+    "fragment PostCardFields on Post {\n  id\n  title\n  date\n  slug\n  excerpt\n  date\n  featuredImage {\n    node {\n      sourceUrl\n      altText\n    }\n  }\n  categories {\n    nodes {\n      name\n    }\n  }\n  tags {\n    nodes {\n      name\n    }\n  }\n}": types.PostCardFieldsFragmentDoc,
 };
 
 /**
@@ -55,7 +55,7 @@ export function graphql(source: "query GetAllPosts($first: Int!, $after: String,
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "fragment PostCardFields on Post {\n  id\n  title\n  date\n  slug\n  excerpt\n  date\n  featuredImage {\n    node {\n      sourceUrl\n      altText\n    }\n  }\n}"): (typeof documents)["fragment PostCardFields on Post {\n  id\n  title\n  date\n  slug\n  excerpt\n  date\n  featuredImage {\n    node {\n      sourceUrl\n      altText\n    }\n  }\n}"];
+export function graphql(source: "fragment PostCardFields on Post {\n  id\n  title\n  date\n  slug\n  excerpt\n  date\n  featuredImage {\n    node {\n      sourceUrl\n      altText\n    }\n  }\n  categories {\n    nodes {\n      name\n    }\n  }\n  tags {\n    nodes {\n      name\n    }\n  }\n}"): (typeof documents)["fragment PostCardFields on Post {\n  id\n  title\n  date\n  slug\n  excerpt\n  date\n  featuredImage {\n    node {\n      sourceUrl\n      altText\n    }\n  }\n  categories {\n    nodes {\n      name\n    }\n  }\n  tags {\n    nodes {\n      name\n    }\n  }\n}"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

@@ -1,11 +1,10 @@
+import { parseISO, format } from "date-fns";
+
 function formatDate(isoString: string): string {
-    const date = new Date(isoString);
-    return date.toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-    });
+    const date = parseISO(isoString); // safely parse ISO date-time string
+    return format(date, "MMMM do, yyyy");
 }
+
 function enumToText(value: string): string {
     if(value === null)  {
         return ''
