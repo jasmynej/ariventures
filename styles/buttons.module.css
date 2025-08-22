@@ -43,6 +43,7 @@
     background-color: var(--primary-rose);
     border: 1px solid var(--primary-rose);
     transition: background-color 0.3s ease-in, color 0.3s ease-in;
+    margin: 3px;
 }
 
 .primarySmall:hover {
