@@ -15,10 +15,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr; /* Always two equal-width columns */
     gap: 1rem;
-    width: 100%; /* or a max-width if needed */
+    width: 50em;
+    align-items: stretch;/* or a max-width if needed */
 }
 .featuredPost {
-    width: 100%;
+    width: 50em;
     margin-bottom: 3rem;
 }
 
@@ -45,6 +46,7 @@
     width: 100%;
     display: flex;
     gap: 2em;
+    justify-content: center;
 }
 
 .sidePanelSection {
@@ -61,7 +63,7 @@
 }
 
 .sideSections {
-    width: 30em;
+    width: 30%;
 }
 
 .blogPanel {

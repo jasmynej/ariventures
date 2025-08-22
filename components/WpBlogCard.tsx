@@ -30,13 +30,13 @@ export default function WpBlogCard({post, featured = false} :PostCardProps){
                 <div className={cards.blogCardText}>
                     <h3 className={cards.title}>{post.title}</h3>
                     <p>
-                        {getBlogExcerpt(post.excerpt, 100)}
+                        {getBlogExcerpt(post.excerpt, 150)}
                     </p>
+                    <div onClick={() => router.push(`/blog/${post.slug}`)} className={cards.ctaText}>
+                        <p>Read More <i className="fi fi-tr-arrow-small-right"></i></p>
+                    </div>
                 </div>
-                <button className={buttons.primary}
-                        onClick={() => router.push(`/blog/${post.slug}`)}>
-                    Read More
-                </button>
+
             </div>
         </div>
     )

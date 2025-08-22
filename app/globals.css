@@ -81,7 +81,6 @@ body {
     padding: 0;
     font-family: var(--font-body), serif;
     color: var(--secondary-charcoal);
-    line-height: 1.6rem;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -89,7 +88,6 @@ body {
 
 h1, h2, h3, h4 {
     font-family: var(--font-display), serif;
-    line-height: 1em;
 }
 
 
