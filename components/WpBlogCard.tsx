@@ -2,7 +2,7 @@ import type {PostCardFieldsFragment} from "@/wordpress/gql/graphql";
 import cards from '@/styles/cards.module.css';
 import blogs from '@/styles/blog.module.css'
 import buttons from '@/styles/buttons.module.css';
-import {getBlogExcerpt} from "@/lib/blogFunctions";
+import {getBlogExcerpt} from "@/lib/blog";
 import { useRouter } from 'next/navigation';
 import {formatDate} from "@/lib/utils";
 

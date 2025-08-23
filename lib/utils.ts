@@ -19,4 +19,24 @@ function enumToCssId(value: string): string {
     return lastWord ? `${lastWord}` : '';
 }
 
-export { formatDate, enumToText, enumToCssId };
+function htmlToPlaintext(html: string): string {
+    if (!html) return "";
+    return html
+        // remove scripts/styles
+        .replace(/<script[^>]*>([\s\S]*?)<\/script>/gi, "")
+        .replace(/<style[^>]*>([\s\S]*?)<\/style>/gi, "")
+        // strip tags
+        .replace(/<\/?[^>]+(>|$)/g, " ")
+        // decode entities like &nbsp;
+        .replace(/&nbsp;/g, " ")
+        .replace(/&amp;/g, "&")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&#39;/g, "'")
+        .replace(/&quot;/g, '"')
+        // collapse whitespace
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+export { formatDate, enumToText, enumToCssId, htmlToPlaintext };
