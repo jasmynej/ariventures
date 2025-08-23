@@ -14,7 +14,7 @@ export default function AriAiChatPage(){
 
     useEffect(() => {
         const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) setMessages(JSON.parse(saved));
+        if (saved && saved != '[]') setMessages(JSON.parse(saved));
         else setMessages(prev => [...prev, initMessage]);
     }, []);
 
