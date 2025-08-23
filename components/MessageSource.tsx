@@ -6,7 +6,7 @@ interface MessageSourceProps {
 }
 
 export default function MessageSource({source}: MessageSourceProps){
-    const blogBase = process.env.NEXT_BLOG_ROOT_URL ?? 'http://localhost:3000/blog'
+    const blogBase = process.env.NEXT_PUBLIC_BLOG_ROOT_URL ?? 'http://localhost:3000/blog'
     const href = `${blogBase}/${source.slug}`;
     return (
         <div className={chat.sourceContainer}
