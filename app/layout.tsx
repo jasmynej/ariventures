@@ -6,7 +6,7 @@ import AvFooter from "@/components/AvFooter";
 import layoutStyles from "@/styles/layout.module.css"
 import { useSelectedLayoutSegment } from 'next/navigation';
 
-const notMainAV = ['admin', 'ariventures-abroad'];
+const notMainAV = ['admin', 'ariventures-abroad', 'apps'];
 export default function RootLayout({
   children,
 }: Readonly<{

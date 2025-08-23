@@ -11,6 +11,7 @@ const pageTitlePatterns: { pattern: string; title: string }[] = [
     { pattern: "/admin/travel-guides", title: "Travel Guides" },
     { pattern: "/admin/users", title: "Users" },
     { pattern: "/admin/models", title: "Models" },
+    {pattern: "/apps/chat", title: "Ari Chat Agent"}
 ];
 
 const pageTitles = {

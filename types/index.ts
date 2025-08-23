@@ -4,3 +4,4 @@ export type {BlogPost, NewBlogPost, NewPostRequest, BlogPosts, BlogTag, BlogCate
 export type {City} from './City'
 export type {VisaStatus, VisaStatusResponse, UpdateVisaStatus, VisaFilterParams} from './VisaStatus'
 export type {CategoryNode, TagNode, PostNode, PipelinePostNode, NormalizedPost} from './WpBlog'
+export type {AiChatResponse} from './Ai'

@@ -46,4 +46,17 @@ const modelsNavLinks: NavLinks = [
     }
 ]
 
-export {adminSideNavLinks, modelsNavLinks}
+const appsNavLinks: NavLinks = [
+    {
+        label: "Ai Chatbot",
+        href:"/apps/chat",
+        icon: undefined
+    },
+    {
+        label: "Visa Checker",
+        href:"/apps/visa-requirement",
+        icon: undefined
+    }
+]
+
+export {adminSideNavLinks, modelsNavLinks, appsNavLinks}

@@ -16,4 +16,6 @@ export type NormalizedPost = {
     published_at: Date
     excerpt: string
     modified: Date
+    content_hash: string
+    featured_img_url: string
 }

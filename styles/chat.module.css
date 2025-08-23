@@ -1,0 +1,161 @@
+/* page root */
+.chatPageContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;     /* better on mobile than 100vh */
+    overflow: hidden;   /* optional: prevent body scroll */
+}
+
+/* if you have a wrapper between page and chatArea, add this too */
+.botContainer, .chatBody, .contentWrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;      /* ✅ critical */
+}
+
+/* scrollable messages */
+.chatArea {
+    flex: 1 1 auto;
+    min-height: 0;      /* ✅ critical */
+    overflow-y: auto;
+    padding: 15px;
+}
+
+/* input at bottom */
+.inputArea {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #fff;
+    border-top: 1px solid var(--primary-clay);
+    padding: 8px;
+    height: 120px;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom));
+}
+
+.chatInput {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    height: 60%;
+    border: 1px solid var(--primary-clay);
+    background-color: var(--secondary-offwhite);
+    gap: 20px;
+    border-radius: 15px;
+
+}
+
+.chatInput input {
+    border: none;
+    background-color:var(--secondary-offwhite);
+    width: 90%;
+    margin-left: 2px;
+    padding: 12px;
+    font-size: 16px;
+    font-family: var(--font-body) serif;
+
+
+}
+
+.chatInput button {
+    background-color: var(--primary-rose);
+    color:var(--ecru);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+}
+
+.botMessage {
+    background-color: var(--ecru);
+    border-radius: 15px;
+    justify-self: flex-start;
+    max-width: 80%;
+    padding:2px 20px;
+    margin: 5px;
+    border: 1px solid var(--primary-clay);
+    font-size: 18px;
+}
+
+.userMessage {
+    background-color: var(--primary-rose);
+    text-align: right;
+    justify-self: flex-end;
+    width: max-content;
+    min-width: 250px;
+    padding: 0 15px;
+    margin: 5px;
+    border-radius: 15px;
+    border: 1px solid var(--primary-clay);
+    line-height: 5px;
+    font-size: 18px;
+}
+
+.sourceContainer {
+    display: flex;
+    align-items: center;
+    border:1px solid var(--primary-clay);
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+    gap: 5px;
+    transition: background-color 0.2s ease-in, color 0.2s ease-in;
+}
+
+.sourceContainer:hover {
+    background-color: var(--primary-blush);
+}
+
+.sourceImg {
+    width: 5em;
+    height: 5em;
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+    border-radius: 5px;/* don’t shrink in flex row */
+}
+
+.sources {
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    padding: 10px;
+    border-top:1px solid var(--primary-clay);
+
+}
+
+.sourceLink {
+    color: var(--secondary-charcoal);
+    margin: 5px;
+    text-decoration: none;
+}
+
+.chatHeader {
+    flex: 0 0 auto;
+    background-color: white;
+    border-bottom: 1px solid var(--primary-clay);
+}
+
+.chatInput input:focus{
+    outline: none;
+}
+
+.messageInfo {
+    display: flex;
+    text-align: left;
+    gap: 5px;
+    font-size: 20px;
+}
+
+.sender {
+    font-weight: 500;
+    color: var(--secondary-mocha)
+}
+
+.time {
+    font-weight: 300;
+}

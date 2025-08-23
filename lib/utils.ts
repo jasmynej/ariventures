@@ -1,4 +1,4 @@
-import { parseISO, format } from "date-fns";
+import {format, parseISO} from "date-fns";
 
 function formatDate(isoString: string): string {
     const date = parseISO(isoString); // safely parse ISO date-time string
@@ -39,4 +39,15 @@ function htmlToPlaintext(html: string): string {
         .trim();
 }
 
-export { formatDate, enumToText, enumToCssId, htmlToPlaintext };
+function getTime(date: Date){
+    if (date) {
+        return date.toLocaleTimeString([], {
+            hour: "numeric",
+            minute: "2-digit",
+            hour12: true,
+        })
+    }
+    return "no time"
+
+}
+export { formatDate, enumToText, enumToCssId, htmlToPlaintext, getTime };
