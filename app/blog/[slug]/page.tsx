@@ -6,7 +6,7 @@ import parse from 'html-react-parser';
 import blogStyles from '@/styles/blog.module.css';
 import { formatDate } from '@/lib/utils';
 import type { GetPostBySlugQuery } from '@/wordpress/gql/graphql';
-import {fetchWpBlogPost} from "@/lib/blogFunctions";
+import {fetchWpBlogPost} from "@/lib/blog";
 
 type Post = NonNullable<GetPostBySlugQuery['post']>;
 

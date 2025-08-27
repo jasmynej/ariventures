@@ -4,7 +4,7 @@ import {useState, useEffect} from 'react';
 import buttons from '@/styles/buttons.module.css'
 import layout from '@/styles/layout.module.css'
 import {PostNode} from "@/types";
-import {fetchWpBlogPosts} from "@/lib/blogFunctions";
+import {fetchWpBlogPosts} from "@/lib/blog";
 import tables from "@/styles/tables.module.css"
 import tableStyles from "@/styles/tables.module.css";
 import buttonStyles from "@/styles/buttons.module.css";

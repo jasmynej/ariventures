@@ -1,0 +1,39 @@
+query PostsByModified(
+    $first: Int!
+    $after: String
+    $afterYear: Int!
+    $afterMonth: Int!
+    $afterDay: Int!
+) {
+    posts(
+        first: $first
+        after: $after
+        where: {
+            orderby: { field: MODIFIED, order: ASC }
+            dateQuery: {
+                # inclusive must be here, not inside `after`
+                inclusive: true
+                after: { year: $afterYear, month: $afterMonth, day: $afterDay }
+                # remove `column` if your schema doesn't support it
+                # column: MODIFIED
+            }
+            status: PUBLISH
+        }
+    ) {
+        pageInfo { endCursor hasNextPage }
+        nodes {
+            databaseId
+            slug
+            title
+            date
+            modified
+            status
+            link
+            featuredImage { node { sourceUrl } }
+            categories { nodes { slug name } }
+            tags { nodes { slug name } }
+            excerpt
+            content
+        }
+    }
+}

@@ -49,6 +49,7 @@
     flex-grow: 1;
     overflow-y: auto;
     background-color: #faf2f2;
+    height: 100%;
 }
 
 .nav {

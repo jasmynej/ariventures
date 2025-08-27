@@ -7,7 +7,7 @@ import form from "@/styles/forms.module.css"
 import buttons from "@/styles/buttons.module.css"
 import pageContent from '@/data/content/blog.json'
 import WpBlogCard from "@/components/WpBlogCard";
-import {fetchWpBlogPosts} from "@/lib/blogFunctions";
+import {fetchWpBlogPosts} from "@/lib/blog";
 import {CategoryNode, TagNode, PostNode} from "@/types";
 import {
     InputMaybe,
