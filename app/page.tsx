@@ -2,7 +2,6 @@ import home from "./page.module.css";
 import layout from "@/styles/layout.module.css"
 import buttons from "@/styles/buttons.module.css"
 import IconCard from "@/components/IconCard";
-import AnimatedLogo from "@/components/AnimatedLogo";
 const cards  = [
     {
         icon:"/icons/006-passportticket.svg",
