@@ -15,7 +15,10 @@ export default function SideNav({links, baseLink}: SideNavProps) {
     return (
         <div className={dashboard.sideNavContainer}>
             <div className={dashboard.sideHeader}>
-                <img src="/images/ariventures_logo.png" alt="logo" />
+                <Link href="/">
+                    <img src="/images/ariventures_logo.png" alt="logo" />
+                </Link>
+
             </div>
 
             <div className={dashStyles.nav}>

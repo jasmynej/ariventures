@@ -28,9 +28,15 @@
     display: flex;
     height: 4em;
     padding: 30px;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     flex-shrink: 0;
+    gap:3px;
+}
+
+.footer a {
+    color: var(--secondary-mocha);
+    text-decoration: none;
 }
 
 .section {
