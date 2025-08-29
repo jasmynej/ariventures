@@ -114,6 +114,14 @@
     padding: 3px;
     border-radius: 2px;
 }
+
+.loadingContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50%;
+}
 /* ========== Tablet (>= 768px) ========== */
 
 @media (min-width: 768px) {

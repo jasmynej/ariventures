@@ -2,24 +2,24 @@ import home from "./page.module.css";
 import layout from "@/styles/layout.module.css"
 import buttons from "@/styles/buttons.module.css"
 import IconCard from "@/components/IconCard";
-
+import AnimatedLogo from "@/components/AnimatedLogo";
 const cards  = [
     {
-        icon:"/icons/015-passport-1.svg",
+        icon:"/icons/006-passportticket.svg",
         title:"Comprehensive Travel & Visa Services",
         body:"From visa acquisition to relocation planning, " +
             "we provide personalized guidance for individuals and families navigating " +
             "international travel, study, or resettlement.",
     },
     {
-        icon:"/icons/017-plane-ticket-1.svg",
+        icon:"/icons/004-ticket.svg",
         title:"One-on-One Support, Every Step",
         body:"We don’t believe in one-size-fits-all. " +
             "You’ll work directly with an expert who tailors every recommendation to your goals, " +
             "timeline, and preferences.",
     },
     {
-        icon:"/icons/016-around-the-world-2.svg",
+        icon:"/icons/001-flight.svg",
         title:"Discreet, Boutique-Level Service",
         body:"Ariventures offers a high-touch, concierge-style experience — combining expertise, " +
             "discretion, and a deep understanding of global mobility and lifestyle needs.",
@@ -51,6 +51,7 @@ export default function Home() {
         <div className={layout.section}>
             <h1>Client Success Stories</h1>
             <h5>Hear from Travelers who trusted us with their dreams </h5>
+
         </div>
     </div>
   );

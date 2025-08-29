@@ -90,7 +90,7 @@
     flex-direction: column;
     width: 20rem;
     padding: 1.5rem;
-    background-color: var(--primary-tan);
+    background-color: var(--primary-blush);
 }
 .iconContainer {
     width: max-content;
@@ -106,6 +106,7 @@
 .iconContainer:nth-child(odd) {
     background-color: var(--secondary-offwhite);
 }
+
 .icon {
     width: 3rem;
     height: auto;
@@ -114,7 +115,7 @@
 .cardTitle {
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--secondary-charcoal);
+    color: var(--secondary-mocha);
 }
 
 .ctaText {

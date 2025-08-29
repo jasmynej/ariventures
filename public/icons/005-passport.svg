@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="512" height="512" x="0" y="0" viewBox="0 0 128 128" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+  <g>
+    <path fill="#f7f1ed" d="M102 22h10v84h-10z" opacity="1" data-original="#e7f2ff"/>
+    <path fill="#f7c6c6" d="M16 7h82a4 4 0 0 1 4 4v106a4 4 0 0 1-4 4H16V7z" opacity="1" data-original="#ff4283" class=""/>
+    <path fill="#f7f1ed" d="M38 22h42v10H38z" opacity="1" data-original="#e7f2ff"/>
+    <g fill="#e5056f">
+      <path d="M80 97.75H38a1.75 1.75 0 0 1 0-3.5h42a1.75 1.75 0 0 1 0 3.5zM69 107.75H49a1.75 1.75 0 0 1 0-3.5h20a1.75 1.75 0 0 1 0 3.5z" fill="#b881b1" opacity="1" data-original="#e5056f" class=""/>
+    </g>
+    <circle cx="59" cy="64" r="18" fill="#f5e2d7" opacity="1" data-original="#ffd92e" class=""/>
+    <path fill="#dbbda8" d="M63.562 46.606a17.474 17.474 0 0 0-9.124 0c-2.8 3.257-4.4 9.439-4.652 15.644h-8.7C41.033 62.826 41 63.409 41 64s.033 1.174.088 1.75h8.7c.254 6.2 1.847 12.387 4.652 15.644a17.474 17.474 0 0 0 9.124 0c2.805-3.257 4.4-9.439 4.652-15.644h8.7c.055-.576.088-1.159.088-1.75s-.033-1.174-.088-1.75h-8.7c-.256-6.205-1.849-12.387-4.654-15.644zM59 80.25c-2.2 0-5.342-5.593-5.713-14.5h11.426c-.371 8.907-3.513 14.5-5.713 14.5zm-5.713-18c.371-8.907 3.51-14.5 5.713-14.5s5.342 5.593 5.713 14.5z" opacity="1" data-original="#fcbe00" class=""/>
+  </g>
+</svg>

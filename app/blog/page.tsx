@@ -9,6 +9,7 @@ import pageContent from '@/data/content/blog.json'
 import WpBlogCard from "@/components/WpBlogCard";
 import {fetchWpBlogPosts} from "@/lib/blog";
 import {CategoryNode, TagNode, PostNode} from "@/types";
+import AnimatedLogo from "@/components/AnimatedLogo";
 import {
     InputMaybe,
     OrderEnum,
@@ -53,9 +54,9 @@ export default function AllBlogPosts() {
         })
     }
 
-    if (!posts || posts.length === 0 || !posts[0]) {
-        return <div className={layout.section}><p>Loading...</p></div>;
-    }
+    // if (!posts || posts.length === 0 || !posts[0]) {
+    //     return <div className={layout.section}><p>Loading...</p></div>;
+    // }
     return (
         <div>
             <div className={layout.section_bg_img} style={{
@@ -66,20 +67,37 @@ export default function AllBlogPosts() {
             </div>
             <div className={layout.section}>
                 <div className={blog.blogPageContainer}>
+                    {/* Main Content Area */}
                     <div className={blog.allPosts}>
-                        {/* Featured Post */}
-                        <div className={blog.featuredPost}>
-                            <WpBlogCard post={posts[0]} featured />
-                        </div>
+                        {/* Loading */}
+                        {!posts ? (
+                            <div className={blog.loadingContainer}>
+                                <AnimatedLogo/>
+                            </div>
 
-                        {/* Grid of other posts */}
-                        <div className={blog.blogGrid}>
-                            {posts.slice(1).map((post) => (
-                                <WpBlogCard key={post.id} post={post} />
-                            ))}
-                        </div>
+                        ) : posts.length === 0 ? (
+                            <div className={blog.loadingContainer}>
+                                <AnimatedLogo/>
+                            </div>
+
+                        ) : (
+                            <>
+                                {/* Featured Post */}
+                                <div className={blog.featuredPost}>
+                                    <WpBlogCard post={posts[0]} featured />
+                                </div>
+
+                                {/* Grid of other posts */}
+                                <div className={blog.blogGrid}>
+                                    {posts.slice(1).map((post) => (
+                                        <WpBlogCard key={post.id} post={post} />
+                                    ))}
+                                </div>
+                            </>
+                        )}
                     </div>
 
+                    {/* Sidebar */}
                     <div className={blog.sideSections}>
                         <div className={blog.sidePanelSection}>
                             <form onSubmit={(e) => search(e)}>
@@ -88,32 +106,31 @@ export default function AllBlogPosts() {
                                         type="text"
                                         placeholder="Search Articles..."
                                         className={form.input}
-                                        onChange={(e)=> setSearchQuery(e.target.value)}/>
+                                        onChange={(e) => setSearchQuery(e.target.value)}
+                                    />
                                     <button className={buttons.primarySmall}>Search</button>
                                 </div>
-
                             </form>
                         </div>
+
                         <div className={blog.sidePanelSection}>
                             <h3>Categories</h3>
-                            {
-                                categories.map((category)=> (
-                                    <div key={category.slug}>
-                                        <p>{category.name}</p>
-                                    </div>
-                                ))
-                            }
+                            {categories.map((category) => (
+                                <div key={category.slug}>
+                                    <p>{category.name}</p>
+                                </div>
+                            ))}
                         </div>
+
                         <div className={blog.sidePanelSection}>
                             <h3>Tags</h3>
-                            {
-                                tags.map((tag)=> (
-                                    <div key={tag.slug}>
-                                        <p>{tag.name}</p>
-                                    </div>
-                                ))
-                            }
+                            {tags.map((tag) => (
+                                <div key={tag.slug}>
+                                    <p>{tag.name}</p>
+                                </div>
+                            ))}
                         </div>
+
                         <div className={blog.sidePanelSection}>
                             <h3>Subscribe</h3>
                         </div>

@@ -1,0 +1,52 @@
+.wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform, opacity, filter;
+    animation: enter 600ms ease-out both;
+}
+
+/* floating + gentle scale loop */
+.logo {
+    display: block;
+    transform-origin: center;
+    animation: float 3.2s ease-in-out infinite;
+}
+
+.wrap[data-loop="false"] .logo {
+    animation-iteration-count: 1;
+}
+
+/* soft ambient glow behind the logo */
+.glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    filter: blur(18px);
+    opacity: 0.35;
+    background: radial-gradient(circle, rgba(219,189,168,0.6) 0%, rgba(247,198,198,0.3) 40%, rgba(0,0,0,0) 70%);
+    pointer-events: none;
+    animation: pulse 2.8s ease-in-out infinite;
+}
+
+.wrap[data-loop="false"] .glow {
+    animation-iteration-count: 1;
+}
+
+/* keyframes */
+@keyframes enter {
+    from { opacity: 0; transform: scale(0.9); filter: blur(4px); }
+    to   { opacity: 1; transform: scale(1);   filter: blur(0); }
+}
+
+@keyframes float {
+    0%   { transform: translateY(0)    scale(1); }
+    50%  { transform: translateY(-6px) scale(1.03); }
+    100% { transform: translateY(0)    scale(1); }
+}
+
+@keyframes pulse {
+    0%,100% { opacity: 0.25; transform: scale(0.96); }
+    50%     { opacity: 0.45; transform: scale(1.05); }
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="512" height="512" x="0" y="0" viewBox="0 0 128 128" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+  <g>
+    <circle cx="64" cy="64" r="45" fill="#b09578" opacity="1" data-original="#ffe576" class=""/>
+    <circle cx="63.44" cy="63.44" r="35.551" fill="#f7f1ed" opacity="1" data-original="#fffee3" class=""/>
+    <path fill="#b881b1" d="m55.18 58.334 17.64 11.332 5.287-27.627z" opacity="1" data-original="#fc5656" class=""/>
+    <path fill="#f7c6c6" d="M49.893 85.961 72.82 69.666 55.18 58.334z" opacity="1" data-original="#5178f2" class=""/>
+    <g fill="#606060">
+      <path d="M93.132 63.936a1.75 1.75 0 0 0 0-3.5H90.6a1.75 1.75 0 0 0 0 3.5zM37.405 63.936a1.75 1.75 0 0 0 0-3.5h-2.537a1.75 1.75 0 0 0 0 3.5zM65.75 91.319v-2.538a1.75 1.75 0 0 0-3.5 0v2.538a1.75 1.75 0 1 0 3.5 0zM65.75 35.592v-2.537a1.75 1.75 0 0 0-3.5 0v2.537a1.75 1.75 0 0 0 3.5 0z" fill="#606060" opacity="1" data-original="#606060"/>
+    </g>
+  </g>
+</svg>
