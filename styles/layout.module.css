@@ -5,19 +5,23 @@
 }
 
 .header {
-    position: sticky;
-    top: 0;
-    z-index: 50;
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 1000;
+    background: #fff;
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem;
-    background: white;
+    height: var(--header-h);      /* <- define height */
+    padding: 0 1rem;              /* horizontal only now */
+    border-bottom: 1px solid rgba(0,0,0,.06);
 }
+
 .main {
     flex: 1;
-    background: var(--secondary-offwhite)
+    background: var(--secondary-offwhite);
+    padding-top: var(--header-h); /* <- push content below header */
+    min-height: calc(100vh - var(--header-h));
 }
 
 .footer {

@@ -1,9 +1,11 @@
 query GetAllPosts($first: Int!, $after: String, $where: RootQueryToPostConnectionWhereArgs) {
-    categories {
+    categories(first: 5, where: {orderby: COUNT, order: DESC} ) {
         nodes {
             id
+            databaseId
             name
             slug
+            count
         }
     }
     tags {
